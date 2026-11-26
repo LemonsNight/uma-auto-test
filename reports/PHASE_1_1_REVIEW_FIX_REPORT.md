@@ -225,6 +225,29 @@ DPI 声明 11/11、记事本三场景通过、主程序冒烟 6/6。
 | 不安全候选子窗口不回退根窗口 | 三类拒绝场景均 `post_calls=0`，目标保留为不安全候选 HWND |
 | 真实鼠标位置未被程序改变 | 隔离测试静默时段对照组与实验组均不变；偶发外部漂移已用对照组区分 |
 
+### 附录：IsWindow 异常安全补丁（本轮）
+
+- **原问题**：`GetAncestor` 返回后的 `if not ancestor or not self.api.is_window(ancestor)`
+  以及最终目标阶段的 `is_window(target_hwnd)` / `is_window_enabled(target_hwnd)`
+  未做异常保护；异常会从 `resolve()` 泄漏，可能被误读为窗口有效。
+- **修改**：
+  - `IsWindow(ancestor)` 单独 try/except；异常时返回明确拒绝，
+    `chain_reliable=False`、`root_hwnd=0`，不继续解析。
+  - 最终目标 `IsWindow` / `IsWindowEnabled` 分别 try/except；异常一律拒绝，
+    不解释为有效/已启用，不回退 root HWND 或其它窗口。
+- **Mock 证据**：`tests/test_iswindow_exceptions.py` 9/9 通过。
+  使用调用计数精确控制第 N 次查询抛异常，避免只覆盖 `_walk_chain` 前置检查：
+  - 第 2 次 IsWindow（ancestor 验证）异常 -> `reason=IsWindow(ancestor) 查询异常...`，
+    `reliable=False`、`root=0x0`、`post_calls=0`。
+  - 第 6 次 IsWindow（最终目标检查）异常 -> `reason=最终目标 IsWindow 查询异常...`、
+    `post_calls=0`。
+  - 第 1 次 IsWindowEnabled（最终目标）异常 -> `reason=最终目标 IsWindowEnabled 查询异常...`、
+    无异常泄漏、`post_calls=0`。
+  - 正常窗口与普通应用子窗口仍放行。
+- **回归**：全部原有测试回归通过；`git diff <上轮commit> -- core/input_backend.py` 为空；
+  禁用 API 静态检查无命中；隔离测试实验组光标不变（偶发外部活动由对照组区分）。
+- **未验证**：真实 Windows 下这些异常同样无法稳定复现，仅 Mock 覆盖。
+
 ### 尚未验证
 
 真实 Windows 下 GetAncestor / 候选子窗口查询异常分支无法稳定复现，仅 Mock 覆盖；

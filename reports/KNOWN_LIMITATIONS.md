@@ -72,3 +72,5 @@
 27. **RealChildWindowFromPoint 真实 API 入参仍未逐字节断言**：真实记事本场景
     `WindowFromPoint` 直接命中 `RichEditD2DPT`，不进入该 API 分支；
     坐标修正仅由 Mock 验证。
+28. **IsWindow / IsWindowEnabled 异常仅 Mock 覆盖**：本轮按调用序号精确注入异常并验证
+    拒绝与零 PostMessage 调用；真实 Windows 下这些异常无法稳定复现。

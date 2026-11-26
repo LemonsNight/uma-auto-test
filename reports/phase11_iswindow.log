@@ -1,0 +1,11 @@
+2026-11-26 17:55:15 [WARNING] core.window_resolver: IsWindow(ancestor) 查询异常 HWND=0x1: 模拟第 2 次 IsWindow 异常
+2026-11-26 17:55:15 [WARNING] core.input_backend: 拒绝点击 (50, 50): IsWindow(ancestor) 查询异常，安全失败: 模拟第 2 次 IsWindow 异常
+2026-11-26 17:55:15 [WARNING] core.window_resolver: IsWindow 查询异常 HWND=0x1: 模拟第 3 次 IsWindow 异常
+2026-11-26 17:55:15 [WARNING] core.window_resolver: IsWindow 查询异常 HWND=0x1: 模拟第 4 次 IsWindow 异常
+2026-11-26 17:55:15 [WARNING] core.window_resolver: IsWindow 查询异常 HWND=0x1: 模拟第 5 次 IsWindow 异常
+2026-11-26 17:55:15 [WARNING] core.window_resolver: 拒绝目标: 最终目标: 父窗口链不可靠（异常/成环/超深/句柄失效），按安全失败策略拒绝发送
+2026-11-26 17:55:15 [WARNING] core.window_resolver: 拒绝目标: 最终目标 IsWindow 查询异常，安全失败: 模拟第 6 次 IsWindow 异常
+2026-11-26 17:55:15 [WARNING] core.window_resolver: 拒绝目标: 最终目标 IsWindow 查询异常，安全失败: 模拟第 6 次 IsWindow 异常
+2026-11-26 17:55:15 [WARNING] core.input_backend: 拒绝点击 (50, 50): 最终目标 IsWindow 查询异常，安全失败: 模拟第 6 次 IsWindow 异常
+2026-11-26 17:55:15 [WARNING] core.window_resolver: 拒绝目标: 最终目标 IsWindowEnabled 查询异常，安全失败: 模拟第 1 次 IsWindowEnabled 异常
+2026-11-26 17:55:15 [WARNING] core.input_backend: 拒绝点击 (50, 50): 最终目标 IsWindowEnabled 查询异常，安全失败: 模拟第 1 次 IsWindowEnabled 异常

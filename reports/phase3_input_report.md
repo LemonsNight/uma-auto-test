@@ -5,9 +5,9 @@
 | LPARAM 编解码（含负坐标） | 通过 | 4 组坐标往返一致 |
 | LPARAM 越界拒绝 | 通过 | 超出 16 位有符号范围时抛出 ValueError |
 | 禁用输入 API 静态检查 | 通过 | 命中=[] |
-| WindowFromPoint 解析到测试窗口 | 通过 | HWND=0x4E1AD8 class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99) reject=None |
+| WindowFromPoint 解析到测试窗口 | 通过 | HWND=0x2D1DF2 class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99) reject=None |
 | PostMessage 三条消息顺序与 wParam | 通过 | ids=['0x200', '0x201', '0x202'] wparams=['0x0', '0x1', '0x0'] |
-| PostMessage 全部入队成功 | 通过 | 点击 (199, 999) -> HWND=0x4E1AD8 class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99) /   状态: complete_queued /   三条主消息全部入队: 是 /   按键释放状态不确定: 否 /   HWND 检查: 发送前: HWND=0x4E1AD8 valid=True /   HWND 检查: WM_LBUTTONDOWN 前: HWND=0x4E1AD8 valid=True /   HWND 检查: WM_LBUTTONUP 前: HWND=0x4E1AD8 valid=True /     [primary] WM_MOUSEMOVE HWND=0x4E1AD8 client=(159, 99) wParam=0x0 -> 入队成功 /     [primary] WM_LBUTTONDOWN HWND=0x4E1AD8 client=(159, 99) wParam=0x1 -> 入队成功 /     [primary] WM_LBUTTONUP HWND=0x4E1AD8 client=(159, 99) wParam=0x0 -> 入队成功 /   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据） |
+| PostMessage 全部入队成功 | 通过 | 点击 (199, 999) -> HWND=0x2D1DF2 class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99) /   状态: complete_queued /   三条主消息全部入队: 是 /   按键释放状态不确定: 否 /   HWND 检查: 发送前: HWND=0x2D1DF2 valid=True /   HWND 检查: WM_LBUTTONDOWN 前: HWND=0x2D1DF2 valid=True /   HWND 检查: WM_LBUTTONUP 前: HWND=0x2D1DF2 valid=True /     [primary] WM_MOUSEMOVE HWND=0x2D1DF2 client=(159, 99) wParam=0x0 -> 入队成功 /     [primary] WM_LBUTTONDOWN HWND=0x2D1DF2 client=(159, 99) wParam=0x1 -> 入队成功 /     [primary] WM_LBUTTONUP HWND=0x2D1DF2 client=(159, 99) wParam=0x0 -> 入队成功 /   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据） |
 | 入队成功与实际验证严格区分 | 通过 | 未验证（仅确认消息入队；实际点击需外部证据） |
 | 拒绝向系统桌面窗口发送点击 | 通过 | reason=系统桌面窗口 class='Progman'，禁止发送模拟点击 |
 | 启动后状态 running | 通过 | running |

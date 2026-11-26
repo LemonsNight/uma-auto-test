@@ -147,3 +147,9 @@
 - 新增 `tests/test_final_review_fixes.py`：18/18 通过；全部原有测试回归通过。
 - 报告已严格区分 Mock 验证的 `RealChildWindowFromPoint` 入参与真实记事本验证的
   `WindowFromPoint` 子窗口命中/客户区坐标转换。
+
+### IsWindow 异常安全补丁
+
+- `IsWindow(ancestor)` 与最终目标 `IsWindow` / `IsWindowEnabled` 查询异常均捕获并拒绝，
+  不回退、不泄漏；`tests/test_iswindow_exceptions.py` 9/9 通过（按第 N 次调用精确注入异常）。
+- 全部原有测试回归通过；`core/input_backend.py` 未改动，PostMessage 路径不变。

@@ -1,2 +1,2 @@
-2026-11-26 17:50:21 [WARNING] core.window_resolver: root HWND=0x1 客户区坐标转换失败: 模拟 root 客户区转换失败；不会使用屏幕坐标调用 API
-2026-11-26 17:50:21 [WARNING] core.window_resolver: 拒绝目标: root 窗口客户区坐标转换失败，无法安全定位子窗口，拒绝按根窗口目标继续发送
+2026-11-26 17:55:14 [WARNING] core.window_resolver: root HWND=0x1 客户区坐标转换失败: 模拟 root 客户区转换失败；不会使用屏幕坐标调用 API
+2026-11-26 17:55:14 [WARNING] core.window_resolver: 拒绝目标: root 窗口客户区坐标转换失败，无法安全定位子窗口，拒绝按根窗口目标继续发送

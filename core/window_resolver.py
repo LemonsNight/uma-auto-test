@@ -209,7 +209,21 @@ class WindowResolver:
                 reject_reason=f"GetAncestor 查询异常，安全失败: {exc}",
                 chain_reliable=False, notes=notes,
             )
-        if not ancestor or not self.api.is_window(ancestor):
+        # IsWindow(ancestor) 本身也必须受异常保护；
+        # 查询异常与无效 HWND 等同处理，不能继续解析。
+        try:
+            ancestor_valid = bool(ancestor) and bool(self.api.is_window(ancestor))
+        except Exception as exc:
+            logger.warning("IsWindow(ancestor) 查询异常 HWND=0x%X: %s",
+                           int(ancestor or 0), exc)
+            return ResolvedTarget(
+                hwnd=hit_hwnd, title=hit_title, class_name=hit_class,
+                client_x=coord.x, client_y=coord.y,
+                root_hwnd=0, root_title="",
+                reject_reason=f"IsWindow(ancestor) 查询异常，安全失败: {exc}",
+                chain_reliable=False, notes=notes,
+            )
+        if not ancestor_valid:
             logger.warning("GetAncestor 返回无效 HWND=0x%X", int(ancestor or 0))
             return ResolvedTarget(
                 hwnd=hit_hwnd, title=hit_title, class_name=hit_class,
@@ -339,10 +353,24 @@ class WindowResolver:
                 "拒绝按根窗口目标继续发送"
             )
         if not reject_reason:
-            if not self.api.is_window(target_hwnd):
+            # 最终目标的 HWND 查询异常不能泄漏，也不能解释为"有效/已启用"。
+            try:
+                target_valid = bool(self.api.is_window(target_hwnd))
+            except Exception as exc:
+                target_valid = False
+                reject_reason = f"最终目标 IsWindow 查询异常，安全失败: {exc}"
+            if target_valid:
+                try:
+                    target_enabled = bool(self.api.is_window_enabled(target_hwnd))
+                except Exception as exc:
+                    target_enabled = False
+                    reject_reason = f"最终目标 IsWindowEnabled 查询异常，安全失败: {exc}"
+                if not reject_reason and not target_enabled:
+                    reject_reason = (
+                        "目标窗口被禁用（IsWindowEnabled=False），可能被系统保护"
+                    )
+            elif not reject_reason:
                 reject_reason = "窗口句柄在解析过程中失效"
-            elif not self.api.is_window_enabled(target_hwnd):
-                reject_reason = "目标窗口被禁用（IsWindowEnabled=False），可能被系统保护"
 
         # 坐标转换失败必须拒绝，不能静默沿用屏幕坐标继续发送。
         try:
