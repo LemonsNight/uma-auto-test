@@ -136,3 +136,14 @@
   不冒充 PM aware；未引入 PMv2。新增 11/11 通过。
 - 全部原有测试回归通过；真实桌面冒烟 6/6（只解析与移动圆点）。
 - 详细见 `PHASE_1_1_REVIEW_FIX_REPORT.md`。
+
+### Phase 1.1 Final Review 增补
+
+- `GetAncestor` 异常/无效 HWND -> 明确拒绝、`chain_reliable=False`、不发送输入。
+- 候选子窗口不安全/失效/父链异常 -> 设置最终拒绝原因，不回退 root_hwnd；
+  普通应用正常子窗口继续放行。
+- DPI 查询优先进程级，线程级仅作回退并在诊断中标明"非进程级确认"；
+  完全失败返回 UNKNOWN；未引入 PMv2。
+- 新增 `tests/test_final_review_fixes.py`：18/18 通过；全部原有测试回归通过。
+- 报告已严格区分 Mock 验证的 `RealChildWindowFromPoint` 入参与真实记事本验证的
+  `WindowFromPoint` 子窗口命中/客户区坐标转换。

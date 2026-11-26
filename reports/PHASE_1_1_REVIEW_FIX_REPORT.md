@@ -72,10 +72,26 @@ root 屏幕原点 `(300, 200)`，桌面坐标 `(350, 260)` -> 客户区 `(50, 60
 并断言子窗口 `GetWindowRect` 仍被查询（屏幕坐标校验）。
 转换失败时 API 调用次数为 0，结果被拒绝。
 
-### 真实 Windows 验证证据
+### 真实 Windows 验证证据（严格区分）
 
-`tests/test_notepad_runtime.py` 三场景通过：现代记事本文本区 `RichEditD2DPT`
-的父窗口原点非零，修复后仍能正确解析并插入符变化，证明客户区坐标转换正确。
+1. **真实验证的是 `WindowFromPoint` 子窗口命中与坐标转换结果**：
+   `tests/test_notepad_runtime.py` 三场景（前台 / 部分遮挡 / 浏览器前台）通过。
+   解析器命中的是现代记事本文本区子窗口 `RichEditD2DPT`（见日志中的
+   `class='RichEditD2DPT'`），`ScreenToClient` 得到的客户区坐标与插入符变化
+   共同说明：真实环境下"桌面坐标 -> 目标子窗口 -> 客户区坐标"这条链路是正确的。
+
+2. **未在真实环境逐字节验证的是 `RealChildWindowFromPoint` 的 API 入参**：
+   现代记事本场景中 `WindowFromPoint` 直接命中子窗口，代码走的是
+   `is_child=True` 分支，**没有调用** `RealChildWindowFromPoint`。
+   因此"API 收到客户区坐标 `(50,60)` 而非屏幕坐标 `(350,260)`"这一结论
+   只由 `tests/test_real_child_coordinates.py` 的 Mock 断言证明，
+   **不能在真实环境证据中声称已验证**。
+
+3. `tests/test_desktop_smoke.py` 只验证真实桌面窗口树的解析拒绝与圆点移动，
+   未点击桌面图标，也未验证 `RealChildWindowFromPoint` 入参。
+
+结论：`RealChildWindowFromPoint` 坐标修正 = **Mock 已验证 / 真实 API 入参未验证**；
+`WindowFromPoint` 子窗口命中、客户区坐标转换、记事本插入符变化 = **真实环境已验证**。
 
 ---
 
@@ -153,3 +169,64 @@ UNKNOWN 不冒充 PM，以及真实进程状态与报告一致。
 未改变 PostMessage 输入方案，未引入 PMv2，未引入新依赖，未开始 Phase 2。
 
 等待主 Agent 审查。
+
+---
+
+## 七、Phase 1.1 Final Review（最后一轮小范围修复）
+
+### 任务 1：GetAncestor 异常安全处理
+
+- **原问题**：`root_hwnd = self.api.get_ancestor(...) or hit_hwnd` 没有异常保护，
+  异常时会把 hit_hwnd 当成未经确认的 root 继续使用。
+- **修改**：`GetAncestor` 异常或返回无效 HWND 时，立即返回带明确 `reject_reason`、
+  `chain_reliable=False`、`root_hwnd=0` 的 `ResolvedTarget`，不继续解析、不发送输入。
+- **Mock 证据**：`tests/test_final_review_fixes.py` 18/18 通过，其中：
+  GetAncestor 抛异常 -> 拒绝且 `chain_reliable=False`；`root_hwnd=0`；
+  后端 `PostMessage` 调用次数为 0；返回无效 HWND 同样拒绝。
+
+### 任务 2：候选子窗口安全失败禁止回退根窗口
+
+- **原问题**：候选子窗口判定不安全时只写 notes，最终目标仍可能是 root_hwnd。
+- **修改**：候选子窗口属于桌面结构、HWND 失效、`GetClassName`/`GetParent` 异常、
+  `GetWindowRect` 异常、`RealChildWindowFromPoint` 查询异常时，
+  设置最终 `reject_reason`，并把目标明确设为不安全候选 HWND，
+  不再以 root_hwnd 作为可发送目标。
+- **Mock 证据**：桌面结构候选子窗口、父链异常、HWND 失效、`GetClassName` 异常
+  均返回拒绝，且注入的后端 `PostMessage` 调用次数为 0；
+  普通应用正常子窗口仍放行（目标 HWND 正确、无拒绝原因）。
+
+### 任务 3：DPI 查询顺序与诊断语义
+
+- **原问题**：先查线程 DPI Context 再查进程级，且诊断中可能把线程结果说成进程确认。
+- **修改**：新增 `query_dpi_awareness_detailed()`，优先 `GetProcessDpiAwareness`；
+  失败后才用线程 `GetThreadDpiAwarenessContext` 回退，来源标记为
+  `process` / `thread_fallback` / `unknown`；状态标签区分
+  "进程级查询确认"与"仅线程级回退结果，非进程级确认"；完全失败仍为 UNKNOWN。
+  设置策略与 PM v1 方案不变，未引入 PMv2。
+- **Mock 证据**：进程级成功、线程回退、两者均失败三种分支均通过；
+  真实环境状态标签与来源标记一致。
+
+### 测试与回归
+
+`tests/test_final_review_fixes.py`：18/18 通过。全部原有测试回归通过：
+圆点 15/15、输入模块 15/15、解析器安全 11/11、点击状态 12/12、
+坐标边界 5/5、桌面冒烟 6/6、窗口链异常 7/7、RealChild 坐标 6/6、
+DPI 声明 11/11、记事本三场景通过、主程序冒烟 6/6。
+真实桌面冒烟只解析与移动圆点，未点击桌面图标。
+
+### 专项确认（本轮实跑）
+
+| 确认项 | 证据 |
+|---|---|
+| 原有 PostMessage 路径未变化 | `git diff 08460e2 -- core/input_backend.py` 为空；静态检查无禁用 API |
+| 桌面窗口仍然拒绝 | `phase11_desktop_smoke_report.md`：真实链 `SysListView32→SHELLDLL_DefView→Progman` 拒绝 |
+| 普通应用 SysListView32 仍然允许 | `phase11_review_chain_report.md`：`reason=None chain=['SysListView32','MyApp']` |
+| 普通应用正常子窗口仍然允许 | `phase11_final_review_report.md`：`target=0xB reject=None` |
+| 不安全候选子窗口不回退根窗口 | 三类拒绝场景均 `post_calls=0`，目标保留为不安全候选 HWND |
+| 真实鼠标位置未被程序改变 | 隔离测试静默时段对照组与实验组均不变；偶发外部漂移已用对照组区分 |
+
+### 尚未验证
+
+真实 Windows 下 GetAncestor / 候选子窗口查询异常分支无法稳定复现，仅 Mock 覆盖；
+`RealChildWindowFromPoint` 真实 API 入参仍未逐字节断言；
+UIPI / 其它 Qt/Windows 版本未验证；共享桌面偶发外部鼠标活动已用对照组区分。

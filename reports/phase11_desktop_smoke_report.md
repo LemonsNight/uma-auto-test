@@ -7,6 +7,6 @@
 | 找到桌面 SysListView32(FolderView) | 通过 | ['0x20cbe'] |
 | 真实桌面图标区域解析被拒绝 | 通过 | 坐标=(30, -57) hit=HWND=0x20CBE class='SysListView32' title='FolderView' client=(30, -57) reason=WindowFromPoint 命中: 父窗口链包含系统桌面窗口类 ['Progman', 'WorkerW']，拒绝发送 chain=['SysListView32', 'SHELLDLL_DefView', 'Progman'] |
 | 圆点可移动到桌面图标坐标（不点击） | 通过 | 坐标=(30, -57) 圆点中心=(30, -57) |
-| 真实鼠标位置（仅记录） | 通过 | (1101, 518) |
+| 真实鼠标位置（仅记录） | 通过 | (1520, 1409) |
 
 本测试没有调用任何 PostMessage / SendInput / 鼠标点击 API；只读取窗口树并移动圆点。

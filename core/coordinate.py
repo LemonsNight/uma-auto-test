@@ -81,6 +81,7 @@ def _declare_dpi_prototypes() -> bool:
 _DPI_PROTOTYPES_DECLARED = _declare_dpi_prototypes()
 
 _current_mode: int = DpiAwareness.UNKNOWN
+_current_source: str = "unknown"
 _dpi_setup_attempted: bool = False
 
 
@@ -136,35 +137,52 @@ def _set_process_system() -> bool:
     return bool(_user32.SetProcessDPIAware())
 
 
-def query_actual_dpi_awareness() -> int | None:
-    """查询系统记录的实际 DPI 感知级别；无法确认时返回 None（未知）。"""
-    # Windows 10 1607+：从线程 DPI 感知上下文读取（HANDLE 已正确声明）。
-    try:
-        context = _user32.GetThreadDpiAwarenessContext()
-        if context:
-            value = int(_user32.GetAwarenessFromDpiAwarenessContext(context))
-            if value in _VALID_MODES:
-                return value
-    except Exception:
-        pass
+def query_dpi_awareness_detailed() -> tuple[int | None, str]:
+    """查询 DPI 感知级别，返回 (级别, 来源)。
 
-    # Windows 8.1+：shcore 查询进程级设置。
+    来源取值：
+    - ``process``：GetProcessDpiAwareness 进程级查询成功（已确认）。
+    - ``thread_fallback``：仅线程 DPI Awareness Context 回退成功（非进程级确认）。
+    - ``unknown``：完全无法查询。
+
+    Phase 1.1 Final Review：优先进程级查询，失败后才是线程级回退。
+    """
+    # 1) 优先进程级查询（Windows 8.1+ shcore）。
     if _shcore is not None:
         try:
             value = ctypes.c_int()
             hr = _shcore.GetProcessDpiAwareness(None, ctypes.byref(value))
             if int(hr) == 0 and value.value in _VALID_MODES:
-                return int(value.value)
+                return int(value.value), "process"
         except Exception:
             pass
-    return None
+
+    # 2) 进程级失败后再查当前线程 DPI Awareness Context（Win10 1607+）。
+    try:
+        context = _user32.GetThreadDpiAwarenessContext()
+        if context:
+            value = int(_user32.GetAwarenessFromDpiAwarenessContext(context))
+            if value in _VALID_MODES:
+                return value, "thread_fallback"
+    except Exception:
+        pass
+
+    return None, "unknown"
 
 
-def _apply_dpi_awareness(set_pm_fn, set_system_fn, query_fn) -> int:
-    """纯逻辑版：设置 + 查询 + 报告。可注入函数用于测试所有分支。
+def query_actual_dpi_awareness() -> int | None:
+    """兼容接口：只返回级别，不返回来源。查询不到返回 None。"""
+    mode, _source = query_dpi_awareness_detailed()
+    return mode
 
-    查询失败一律返回 UNKNOWN，不根据设置调用结果推断实际状态。
+
+def _apply_dpi_awareness_detailed(set_pm_fn, set_system_fn, query_fn) -> tuple[int, str]:
+    """纯逻辑版：设置 + 查询，返回 (级别, 来源)。可注入函数用于测试。
+
+    query_fn 可返回 int（兼容旧测试，视为进程级确认）或 (mode, source)。
+    查询失败一律返回 (UNKNOWN, "unknown")，不根据设置调用结果推断实际状态。
     """
+    global _current_source
     requested = False
     try:
         requested = bool(set_pm_fn())
@@ -177,13 +195,27 @@ def _apply_dpi_awareness(set_pm_fn, set_system_fn, query_fn) -> int:
             requested = False
 
     actual = None
+    source = "unknown"
     try:
-        actual = query_fn()
+        result = query_fn()
+        if isinstance(result, tuple):
+            actual, source = result[0], result[1]
+        else:
+            actual, source = result, "process"
     except Exception:
-        actual = None
+        actual, source = None, "unknown"
+
     if actual in _VALID_MODES:
-        return int(actual)
-    return DpiAwareness.UNKNOWN
+        return int(actual), source
+    return DpiAwareness.UNKNOWN, "unknown"
+
+
+def _apply_dpi_awareness(set_pm_fn, set_system_fn, query_fn) -> int:
+    """兼容旧调用：只返回级别。"""
+    mode, _source = _apply_dpi_awareness_detailed(
+        set_pm_fn, set_system_fn, query_fn
+    )
+    return mode
 
 
 def enable_per_monitor_dpi_awareness() -> str:
@@ -193,21 +225,38 @@ def enable_per_monitor_dpi_awareness() -> str:
 
     查询失败时返回 UNKNOWN 标签，不冒充 PER_MONITOR_DPI_AWARE。
     """
-    global _current_mode, _dpi_setup_attempted
+    global _current_mode, _current_source, _dpi_setup_attempted
     if _dpi_setup_attempted:
-        return _dpi_mode_label(_current_mode)
+        return _dpi_status_label(_current_mode, _current_source)
     _dpi_setup_attempted = True
-    _current_mode = _apply_dpi_awareness(
-        _set_process_per_monitor, _set_process_system, query_actual_dpi_awareness
+    _current_mode, _current_source = _apply_dpi_awareness_detailed(
+        _set_process_per_monitor, _set_process_system, query_dpi_awareness_detailed
     )
-    return _dpi_mode_label(_current_mode)
+    return _dpi_status_label(_current_mode, _current_source)
 
 
 def reset_dpi_state_for_test() -> None:
     """仅供测试：重置缓存状态，使 enable() 可重复执行。"""
-    global _current_mode, _dpi_setup_attempted
+    global _current_mode, _current_source, _dpi_setup_attempted
     _current_mode = DpiAwareness.UNKNOWN
+    _current_source = "unknown"
     _dpi_setup_attempted = False
+
+
+def current_dpi_source() -> str:
+    """返回最近一次查询的来源：process / thread_fallback / unknown。"""
+    return _current_source
+
+
+def _dpi_status_label(mode: int, source: str) -> str:
+    label = _dpi_mode_label(mode)
+    if mode == DpiAwareness.UNKNOWN:
+        return label
+    if source == "process":
+        return f"{label}（进程级查询确认）"
+    if source == "thread_fallback":
+        return f"{label}（仅线程级回退结果，非进程级确认）"
+    return label
 
 
 def _dpi_mode_label(mode: int) -> str:

@@ -1,4 +1,5 @@
-2026-11-26 17:41:18 [WARNING] core.window_resolver: GetParent 查询异常 HWND=0x14: 模拟父窗口查询异常
-2026-11-26 17:41:18 [WARNING] core.window_resolver: GetParent 查询异常 HWND=0x14: 模拟父窗口查询异常
-2026-11-26 17:41:18 [WARNING] core.window_resolver: root HWND=0x28 客户区坐标转换失败: 模拟 ScreenToClient 失败；不会使用屏幕坐标调用 API
-2026-11-26 17:41:18 [WARNING] core.window_resolver: 拒绝目标: root 窗口客户区坐标转换失败，无法安全定位子窗口，拒绝按根窗口目标继续发送
+2026-11-26 17:50:20 [WARNING] core.window_resolver: GetParent 查询异常 HWND=0x14: 模拟父窗口查询异常
+2026-11-26 17:50:20 [WARNING] core.window_resolver: GetParent 查询异常 HWND=0x14: 模拟父窗口查询异常
+2026-11-26 17:50:20 [WARNING] core.window_resolver: GetAncestor 返回无效 HWND=0x87
+2026-11-26 17:50:20 [WARNING] core.window_resolver: root HWND=0x28 客户区坐标转换失败: 模拟 ScreenToClient 失败；不会使用屏幕坐标调用 API
+2026-11-26 17:50:20 [WARNING] core.window_resolver: 拒绝目标: root 窗口客户区坐标转换失败，无法安全定位子窗口，拒绝按根窗口目标继续发送

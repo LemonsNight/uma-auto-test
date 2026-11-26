@@ -196,7 +196,29 @@ class WindowResolver:
                 reject_reason="命中 VirtualMouse 自身 Overlay（穿透失效？），拒绝发送",
             )
 
-        root_hwnd = self.api.get_ancestor(hit_hwnd, win32con.GA_ROOT) or hit_hwnd
+        # GetAncestor 是关键安全查询：异常时必须拒绝，不能把 hit_hwnd
+        # 当成"未经确认的 root"继续解析。
+        try:
+            ancestor = self.api.get_ancestor(hit_hwnd, win32con.GA_ROOT)
+        except Exception as exc:
+            logger.warning("GetAncestor 查询异常 HWND=0x%X: %s", hit_hwnd, exc)
+            return ResolvedTarget(
+                hwnd=hit_hwnd, title=hit_title, class_name=hit_class,
+                client_x=coord.x, client_y=coord.y,
+                root_hwnd=0, root_title="",
+                reject_reason=f"GetAncestor 查询异常，安全失败: {exc}",
+                chain_reliable=False, notes=notes,
+            )
+        if not ancestor or not self.api.is_window(ancestor):
+            logger.warning("GetAncestor 返回无效 HWND=0x%X", int(ancestor or 0))
+            return ResolvedTarget(
+                hwnd=hit_hwnd, title=hit_title, class_name=hit_class,
+                client_x=coord.x, client_y=coord.y,
+                root_hwnd=0, root_title="",
+                reject_reason="GetAncestor 未返回有效窗口，安全失败",
+                chain_reliable=False, notes=notes,
+            )
+        root_hwnd = int(ancestor)
         root_title = self._safe_window_text(root_hwnd)
 
         # 命中链安全检查：在定位子窗口之前先判断命中窗口是否属于桌面。
@@ -217,6 +239,7 @@ class WindowResolver:
         target_hwnd = hit_hwnd
         is_child = hit_hwnd != root_hwnd
         root_conversion_failed = False
+        candidate_reject_reason: str | None = None
         if is_child:
             notes.append(
                 f"WindowFromPoint 命中子窗口 HWND=0x{hit_hwnd:X} class={hit_class!r}"
@@ -246,40 +269,70 @@ class WindowResolver:
                     child = self.api.real_child_window_from_point(
                         root_hwnd, root_client_x, root_client_y
                     )
-                    if child and child != root_hwnd and self.api.is_window(child):
-                        child_class = self._safe_class_name(child)
-                        child_title = self._safe_window_text(child)
-                        # GetWindowRect 是屏幕坐标，继续用桌面坐标校验。
+                    if child and child != root_hwnd:
+                        # 候选子窗口任何查询失败都必须拒绝，不能静默回退根窗口。
                         try:
-                            cl, ct, cr, cb = self.api.get_window_rect(child)
-                        except Exception:
-                            cl = ct = cr = cb = 0
-                        if (
-                            cr > cl
-                            and cb > ct
-                            and cl <= coord.x < cr
-                            and ct <= coord.y < cb
-                            and child_title != self.overlay_title
-                        ):
-                            # 子窗口同样要做桌面链检查，不能因为父级已通过就跳过。
-                            child_reason = self._safety_reject_reason(child, "候选子窗口")
-                            if child_reason:
-                                notes.append(f"候选子窗口被拒绝: {child_reason}")
-                            else:
-                                target_hwnd = child
-                                is_child = True
-                                notes.append(
-                                    f"定位到子窗口 HWND=0x{child:X} class={child_class!r} "
-                                    f"title={child_title!r}"
+                            child_valid = bool(self.api.is_window(child))
+                        except Exception as exc:
+                            child_valid = False
+                            candidate_reject_reason = (
+                                f"候选子窗口 IsWindow 查询异常: {exc}"
+                            )
+                        if not child_valid and not candidate_reject_reason:
+                            candidate_reject_reason = (
+                                f"候选子窗口 HWND=0x{child:X} 已失效"
+                            )
+                        if child_valid:
+                            child_class = self._safe_class_name(child)
+                            child_title = self._safe_window_text(child)
+                            # GetWindowRect 是屏幕坐标，继续用桌面坐标校验。
+                            try:
+                                cl, ct, cr, cb = self.api.get_window_rect(child)
+                            except Exception as exc:
+                                cl = ct = cr = cb = 0
+                                candidate_reject_reason = (
+                                    f"候选子窗口 GetWindowRect 查询异常: {exc}"
                                 )
+                            if (
+                                candidate_reject_reason is None
+                                and cr > cl
+                                and cb > ct
+                                and cl <= coord.x < cr
+                                and ct <= coord.y < cb
+                                and child_title != self.overlay_title
+                            ):
+                                # 子窗口同样要做桌面链检查，不能因为父级已通过就跳过。
+                                child_reason = self._safety_reject_reason(
+                                    child, "候选子窗口"
+                                )
+                                if child_reason:
+                                    candidate_reject_reason = child_reason
+                                else:
+                                    target_hwnd = child
+                                    is_child = True
+                                    notes.append(
+                                        f"定位到子窗口 HWND=0x{child:X} "
+                                        f"class={child_class!r} title={child_title!r}"
+                                    )
+                        if candidate_reject_reason:
+                            notes.append(
+                                f"候选子窗口被拒绝: {candidate_reject_reason}；"
+                                "不回退到根窗口目标"
+                            )
+                            # 明确把目标设为不安全候选，避免误用 root_hwnd。
+                            target_hwnd = child
+                            is_child = True
                 except Exception as exc:
-                    notes.append(f"RealChildWindowFromPoint 不可用: {exc}")
+                    candidate_reject_reason = f"RealChildWindowFromPoint 查询异常: {exc}"
+                    notes.append(f"{candidate_reject_reason}；不回退到根窗口目标")
 
         target_title = self._safe_window_text(target_hwnd)
         target_class = self._safe_class_name(target_hwnd)
         chain, reliable = self._walk_chain(target_hwnd)
 
-        reject_reason = self._safety_reject_reason(target_hwnd, "最终目标")
+        reject_reason = candidate_reject_reason
+        if not reject_reason:
+            reject_reason = self._safety_reject_reason(target_hwnd, "最终目标")
         if not reject_reason and root_conversion_failed:
             reject_reason = (
                 "root 窗口客户区坐标转换失败，无法安全定位子窗口，"

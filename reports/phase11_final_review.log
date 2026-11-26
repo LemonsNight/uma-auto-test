@@ -1,0 +1,14 @@
+2026-11-26 17:50:22 [WARNING] core.window_resolver: GetAncestor 查询异常 HWND=0x1: 模拟 GetAncestor 异常
+2026-11-26 17:50:22 [WARNING] core.input_backend: 拒绝点击 (50, 50): GetAncestor 查询异常，安全失败: 模拟 GetAncestor 异常
+2026-11-26 17:50:22 [WARNING] core.window_resolver: GetAncestor 返回无效 HWND=0x0
+2026-11-26 17:50:22 [WARNING] core.window_resolver: 拒绝目标: 候选子窗口: 父窗口链包含 SHELLDLL_DefView（桌面视图），拒绝发送
+2026-11-26 17:50:22 [WARNING] core.input_backend: 拒绝点击 (50, 50): 候选子窗口: 父窗口链包含 SHELLDLL_DefView（桌面视图），拒绝发送
+2026-11-26 17:50:22 [WARNING] core.window_resolver: GetParent 查询异常 HWND=0xB: 模拟候选子窗口父链异常
+2026-11-26 17:50:22 [WARNING] core.window_resolver: GetParent 查询异常 HWND=0xB: 模拟候选子窗口父链异常
+2026-11-26 17:50:22 [WARNING] core.window_resolver: 拒绝目标: 候选子窗口: 父窗口链不可靠（异常/成环/超深/句柄失效），按安全失败策略拒绝发送
+2026-11-26 17:50:22 [WARNING] core.input_backend: 拒绝点击 (50, 50): 候选子窗口: 父窗口链不可靠（异常/成环/超深/句柄失效），按安全失败策略拒绝发送
+2026-11-26 17:50:22 [WARNING] core.window_resolver: 拒绝目标: 候选子窗口 HWND=0xB 已失效
+2026-11-26 17:50:22 [WARNING] core.input_backend: 拒绝点击 (50, 50): 候选子窗口 HWND=0xB 已失效
+2026-11-26 17:50:22 [WARNING] core.window_resolver: GetClassName 查询异常 HWND=0xB: 模拟候选子窗口 GetClassName 异常
+2026-11-26 17:50:22 [WARNING] core.window_resolver: GetClassName 查询异常 HWND=0xB: 模拟候选子窗口 GetClassName 异常
+2026-11-26 17:50:22 [WARNING] core.window_resolver: 拒绝目标: 候选子窗口: 父窗口链不可靠（异常/成环/超深/句柄失效），按安全失败策略拒绝发送

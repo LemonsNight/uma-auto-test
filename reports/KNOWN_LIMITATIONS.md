@@ -62,3 +62,13 @@
     真实记事本场景间接通过（插入符变化）。
 24. **DPI 查询失败场景仅 Mock 覆盖**：本机查询始终成功；未知状态标记为 UNKNOWN，
     不冒充 PM aware。
+
+## Phase 1.1 Final Review 新增限制
+
+25. **GetAncestor / 候选子窗口查询异常仅 Mock 覆盖**：真实 Windows 下这些异常无法稳定复现，
+    已按安全失败策略处理，但无真实异常样本验证。
+26. **DPI 线程级回退结果不等于进程级确认**：诊断会明确标注来源；
+    本机实测为进程级查询成功，线程回退分支仅 Mock 覆盖。
+27. **RealChildWindowFromPoint 真实 API 入参仍未逐字节断言**：真实记事本场景
+    `WindowFromPoint` 直接命中 `RichEditD2DPT`，不进入该 API 分支；
+    坐标修正仅由 Mock 验证。

@@ -6,6 +6,6 @@
 | LPARAM 越界坐标全部拒绝 | 通过 | 越界用例=[(32768, 0), (-32769, 0), (0, 32768), (0, -32769), (40000, -40000)] |
 | DesktopCoordinate 支持负 Y | 通过 | (3000, -40) |
 | DesktopCoordinate 拒绝非整数 | 通过 | float/str/bool 均拒绝 |
-| DPI 感知报告与实际状态一致 | 通过 | note=PER_MONITOR_DPI_AWARE actual=2 current=PER_MONITOR_DPI_AWARE |
+| DPI 感知报告与实际状态一致 | 通过 | note=PER_MONITOR_DPI_AWARE（进程级查询确认） actual=2 current=PER_MONITOR_DPI_AWARE |
 
 未替换为 PER_MONITOR_AWARE_V2；仅在调用失败时查询系统实际状态，避免误报。
