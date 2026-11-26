@@ -1,7 +1,7 @@
-2026-11-26 17:31:01 [INFO] VirtualMouse: DPI 感知: PER_MONITOR_DPI_AWARE
-2026-11-26 17:31:01 [INFO] VirtualMouse: 点击后端: PostMessageW（不移动真实鼠标）
-2026-11-26 17:31:01 [INFO] VirtualMouse: 注意: PostMessage 入队成功不等于目标程序处理了点击
-2026-11-26 17:31:01 [INFO] core.hotkey: 全局紧急停止热键已注册: Ctrl+Alt+Shift+K
-2026-11-26 17:31:01 [INFO] core.virtual_cursor: 控制器已启动
-2026-11-26 17:31:01 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
-2026-11-26 17:31:03 [INFO] core.hotkey: 全局热键已注销
+2026-11-26 17:41:21 [INFO] VirtualMouse: DPI 感知: PER_MONITOR_DPI_AWARE
+2026-11-26 17:41:21 [INFO] VirtualMouse: 点击后端: PostMessageW（不移动真实鼠标）
+2026-11-26 17:41:21 [INFO] VirtualMouse: 注意: PostMessage 入队成功不等于目标程序处理了点击
+2026-11-26 17:41:21 [INFO] core.hotkey: 全局紧急停止热键已注册: Ctrl+Alt+Shift+K
+2026-11-26 17:41:21 [INFO] core.virtual_cursor: 控制器已启动
+2026-11-26 17:41:21 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
+2026-11-26 17:41:23 [INFO] core.hotkey: 全局热键已注销

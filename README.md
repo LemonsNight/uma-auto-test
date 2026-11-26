@@ -68,6 +68,10 @@ WindowFromPoint ->（必要时）子窗口 -> ScreenToClient
 
 详细见 `reports/PHASE_1_1_REPORT.md`。
 
+Review Fix（同日小范围修复）：父链类名读取失败改安全失败；
+`RealChildWindowFromPoint` 改用客户区坐标；DPI API 补全 ctypes 声明并对查询失败标记 UNKNOWN。
+详见 `reports/PHASE_1_1_REVIEW_FIX_REPORT.md`。
+
 ## 目录结构
 
 ```

@@ -125,3 +125,14 @@
   DPI 感知按系统实际状态报告，未引入 PMv2。
 - 新增测试合计 34 个用例（11 + 12 + 5 + 6），全部通过；原有测试全部回归通过。
 - 未改变 PostMessage 唯一输入路径；未引入新依赖；未发现真实鼠标被程序移动。
+
+### Phase 1.1 Review Fix 增补
+
+- 父窗口链：`GetClassName` 失败/空值标记链不可靠；`IsWindow`/`GetParent` 异常安全失败；
+  标题失败仅诊断。新增 7/7 通过。
+- `RealChildWindowFromPoint`：改用 `ScreenToClient` 客户区坐标；转换失败不调用 API、
+  不静默回退。新增 6/6 通过。
+- DPI：补全 ctypes 声明（HANDLE=c_void_p、HRESULT、BOOL），查询失败标记 UNKNOWN，
+  不冒充 PM aware；未引入 PMv2。新增 11/11 通过。
+- 全部原有测试回归通过；真实桌面冒烟 6/6（只解析与移动圆点）。
+- 详细见 `PHASE_1_1_REVIEW_FIX_REPORT.md`。

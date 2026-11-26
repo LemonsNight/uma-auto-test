@@ -159,3 +159,18 @@ DOWN/UP 失败处理安全、HWND 失效停止、坐标边界通过、
 原有与新增测试全部通过、真实鼠标位置未被程序改变、未引入驱动或新输入方案、文档完整更新。
 
 等待主 Agent 审查。
+
+---
+
+## 附录：Review Fix（同日后续小范围修复）
+
+主 Agent 审查发现三个问题并已修复，详见 `PHASE_1_1_REVIEW_FIX_REPORT.md`：
+
+1. `_walk_chain()` 曾吞掉 `GetClassName` 异常并用空类名继续放行；现改为类名失败/空值
+   一律标记链不可靠并拒绝，`GetWindowText` 失败仅作诊断。
+2. `RealChildWindowFromPoint` 曾收到屏幕坐标；现先用 `ScreenToClient` 转为客户区坐标，
+   转换失败不调用 API 也不静默回退，子窗口矩形校验仍用屏幕坐标。
+3. DPI API 补全 ctypes 声明（HANDLE=c_void_p、HRESULT、BOOL），查询失败标记 UNKNOWN，
+   不冒充 PM aware；未引入 PMv2。
+
+新增 24 个用例全部通过（7 + 6 + 11），原有测试全部回归通过。

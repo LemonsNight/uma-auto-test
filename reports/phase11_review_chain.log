@@ -1,0 +1,7 @@
+2026-11-26 17:41:19 [WARNING] core.window_resolver: GetClassName 查询异常 HWND=0x1: 模拟 GetClassName 异常
+2026-11-26 17:41:19 [WARNING] core.window_resolver: GetClassName 查询异常 HWND=0x1: 模拟 GetClassName 异常
+2026-11-26 17:41:19 [WARNING] core.window_resolver: GetClassName 查询异常 HWND=0xB: 模拟 GetClassName 异常
+2026-11-26 17:41:19 [WARNING] core.window_resolver: GetClassName 查询异常 HWND=0xB: 模拟 GetClassName 异常
+2026-11-26 17:41:19 [WARNING] core.window_resolver: GetParent 查询异常 HWND=0x32: 模拟 GetParent 异常
+2026-11-26 17:41:19 [WARNING] core.window_resolver: GetParent 查询异常 HWND=0x32: 模拟 GetParent 异常
+2026-11-26 17:41:19 [WARNING] core.window_resolver: WindowFromPoint / IsWindow 查询异常: 模拟 IsWindow 异常

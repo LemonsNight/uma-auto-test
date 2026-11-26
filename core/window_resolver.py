@@ -55,9 +55,13 @@ class WindowApi:
     def window_from_point(self, x: int, y: int) -> int:
         return int(win32gui.WindowFromPoint((x, y)))
 
-    def real_child_window_from_point(self, hwnd: int, x: int, y: int) -> int:
+    def real_child_window_from_point(self, hwnd: int, client_x: int, client_y: int) -> int:
+        """RealChildWindowFromPoint 使用 hwnd 的**客户区坐标**，不是屏幕坐标。
+
+        调用方必须先用 ScreenToClient 把桌面坐标转换成该窗口的客户区坐标。
+        """
         raw = _user32.RealChildWindowFromPoint(
-            wintypes.HWND(hwnd), wintypes.POINT(x, y)
+            wintypes.HWND(hwnd), wintypes.POINT(client_x, client_y)
         )
         return int(raw) if raw else 0
 
@@ -95,9 +99,11 @@ class ChainNode:
     hwnd: int
     class_name: str
     title: str
+    title_read_failed: bool = False
 
     def describe(self) -> str:
-        return f"0x{self.hwnd:X}[{self.class_name!r},{self.title!r}]"
+        suffix = " title读取失败" if self.title_read_failed else ""
+        return f"0x{self.hwnd:X}[{self.class_name!r},{self.title!r}]{suffix}"
 
 
 @dataclass
@@ -163,8 +169,17 @@ class WindowResolver:
     def resolve(self, coord: DesktopCoordinate) -> ResolvedTarget:
         notes: list[str] = []
 
-        hit_hwnd = self.api.window_from_point(coord.x, coord.y)
-        if not hit_hwnd or not self.api.is_window(hit_hwnd):
+        try:
+            hit_hwnd = self.api.window_from_point(coord.x, coord.y)
+            valid_hit = bool(hit_hwnd) and bool(self.api.is_window(hit_hwnd))
+        except Exception as exc:
+            logger.warning("WindowFromPoint / IsWindow 查询异常: %s", exc)
+            return ResolvedTarget(
+                hwnd=0, title="", class_name="", client_x=coord.x, client_y=coord.y,
+                root_hwnd=0, root_title="",
+                reject_reason=f"WindowFromPoint / IsWindow 查询异常，安全失败: {exc}",
+            )
+        if not valid_hit:
             return ResolvedTarget(
                 hwnd=hit_hwnd, title="", class_name="", client_x=coord.x, client_y=coord.y,
                 root_hwnd=0, root_title="",
@@ -201,46 +216,75 @@ class WindowResolver:
         # 只有当它返回顶层窗口时，才用 RealChildWindowFromPoint 进一步定位。
         target_hwnd = hit_hwnd
         is_child = hit_hwnd != root_hwnd
+        root_conversion_failed = False
         if is_child:
             notes.append(
                 f"WindowFromPoint 命中子窗口 HWND=0x{hit_hwnd:X} class={hit_class!r}"
             )
         else:
+            # RealChildWindowFromPoint 需要 root_hwnd 的客户区坐标；
+            # 转换失败时不调用 API，也不静默回退到根窗口。
             try:
-                child = self.api.real_child_window_from_point(root_hwnd, coord.x, coord.y)
-                if child and child != root_hwnd and self.api.is_window(child):
-                    child_class = self._safe_class_name(child)
-                    child_title = self._safe_window_text(child)
-                    try:
-                        cl, ct, cr, cb = self.api.get_window_rect(child)
-                    except Exception:
-                        cl = ct = cr = cb = 0
-                    if (
-                        cr > cl
-                        and cb > ct
-                        and cl <= coord.x < cr
-                        and ct <= coord.y < cb
-                        and child_title != self.overlay_title
-                    ):
-                        # 子窗口同样要做桌面链检查，不能因为父级已通过就跳过。
-                        child_reason = self._safety_reject_reason(child, "候选子窗口")
-                        if child_reason:
-                            notes.append(f"候选子窗口被拒绝: {child_reason}")
-                        else:
-                            target_hwnd = child
-                            is_child = True
-                            notes.append(
-                                f"定位到子窗口 HWND=0x{child:X} class={child_class!r} "
-                                f"title={child_title!r}"
-                            )
+                root_client_x, root_client_y = self.api.screen_to_client(
+                    root_hwnd, coord.x, coord.y
+                )
+                notes.append(
+                    f"root_hwnd=0x{root_hwnd:X} 客户区坐标=({root_client_x}, {root_client_y}) "
+                    f"（屏幕坐标=({coord.x}, {coord.y})）"
+                )
             except Exception as exc:
-                notes.append(f"RealChildWindowFromPoint 不可用: {exc}")
+                root_conversion_failed = True
+                notes.append(
+                    f"root_hwnd 客户区坐标转换失败，跳过 RealChildWindowFromPoint: {exc}"
+                )
+                logger.warning(
+                    "root HWND=0x%X 客户区坐标转换失败: %s；不会使用屏幕坐标调用 API",
+                    root_hwnd, exc,
+                )
+            if not root_conversion_failed:
+                try:
+                    child = self.api.real_child_window_from_point(
+                        root_hwnd, root_client_x, root_client_y
+                    )
+                    if child and child != root_hwnd and self.api.is_window(child):
+                        child_class = self._safe_class_name(child)
+                        child_title = self._safe_window_text(child)
+                        # GetWindowRect 是屏幕坐标，继续用桌面坐标校验。
+                        try:
+                            cl, ct, cr, cb = self.api.get_window_rect(child)
+                        except Exception:
+                            cl = ct = cr = cb = 0
+                        if (
+                            cr > cl
+                            and cb > ct
+                            and cl <= coord.x < cr
+                            and ct <= coord.y < cb
+                            and child_title != self.overlay_title
+                        ):
+                            # 子窗口同样要做桌面链检查，不能因为父级已通过就跳过。
+                            child_reason = self._safety_reject_reason(child, "候选子窗口")
+                            if child_reason:
+                                notes.append(f"候选子窗口被拒绝: {child_reason}")
+                            else:
+                                target_hwnd = child
+                                is_child = True
+                                notes.append(
+                                    f"定位到子窗口 HWND=0x{child:X} class={child_class!r} "
+                                    f"title={child_title!r}"
+                                )
+                except Exception as exc:
+                    notes.append(f"RealChildWindowFromPoint 不可用: {exc}")
 
         target_title = self._safe_window_text(target_hwnd)
         target_class = self._safe_class_name(target_hwnd)
         chain, reliable = self._walk_chain(target_hwnd)
 
         reject_reason = self._safety_reject_reason(target_hwnd, "最终目标")
+        if not reject_reason and root_conversion_failed:
+            reject_reason = (
+                "root 窗口客户区坐标转换失败，无法安全定位子窗口，"
+                "拒绝按根窗口目标继续发送"
+            )
         if not reject_reason:
             if not self.api.is_window(target_hwnd):
                 reject_reason = "窗口句柄在解析过程中失效"
@@ -296,7 +340,14 @@ class WindowResolver:
 
     # ---------- 安全判定 ----------
     def _walk_chain(self, hwnd: int) -> tuple[list[ChainNode], bool]:
-        """沿 GetParent 向上遍历，返回 (链, 是否可靠)。异常/成环/超深视为不可靠。"""
+        """沿 GetParent 向上遍历，返回 (链, 是否可靠)。
+
+        安全要求（Phase 1.1 Review Fix）：
+        - GetClassName 失败或返回空字符串：链不可靠（不能用空类名冒充已知类名放行）。
+        - IsWindow / GetParent 抛异常或句柄失效：链不可靠。
+        - 成环、超深：链不可靠。
+        - GetWindowText 失败：只记录诊断标志，不替代类名安全检查。
+        """
         chain: list[ChainNode] = []
         seen: set[int] = set()
         current = hwnd
@@ -307,16 +358,52 @@ class WindowResolver:
                 if current in seen:
                     return chain, False
                 seen.add(current)
-                if not self.api.is_window(current):
+
+                # IsWindow 查询异常或失败 -> 不可靠
+                try:
+                    if not self.api.is_window(current):
+                        return chain, False
+                except Exception as exc:
+                    logger.warning("IsWindow 查询异常 HWND=0x%X: %s", current, exc)
                     return chain, False
+
+                # GetClassName 是关键安全数据：失败/空值一律不可靠
+                try:
+                    class_name = self.api.get_class_name(current)
+                except Exception as exc:
+                    logger.warning("GetClassName 查询异常 HWND=0x%X: %s", current, exc)
+                    return chain, False
+                if not isinstance(class_name, str) or not class_name:
+                    logger.warning("GetClassName 返回空值 HWND=0x%X，链不可靠", current)
+                    return chain, False
+
+                # 标题只是诊断信息，失败不影响类名安全判定。
+                title_read_failed = False
+                try:
+                    title = self.api.get_window_text(current)
+                    if not isinstance(title, str):
+                        title = ""
+                        title_read_failed = True
+                except Exception as exc:
+                    title = ""
+                    title_read_failed = True
+                    logger.debug("GetWindowText 查询异常 HWND=0x%X: %s", current, exc)
+
                 chain.append(
                     ChainNode(
                         hwnd=current,
-                        class_name=self._safe_class_name(current),
-                        title=self._safe_window_text(current),
+                        class_name=class_name,
+                        title=title,
+                        title_read_failed=title_read_failed,
                     )
                 )
-                parent = self.api.get_parent(current)
+
+                # GetParent 查询异常 -> 不可靠
+                try:
+                    parent = self.api.get_parent(current)
+                except Exception as exc:
+                    logger.warning("GetParent 查询异常 HWND=0x%X: %s", current, exc)
+                    return chain, False
                 if not parent:
                     return chain, True
                 current = parent

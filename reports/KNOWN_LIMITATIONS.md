@@ -53,3 +53,12 @@
     只按设置调用结果报告，不冒充 PM aware；未引入 `PER_MONITOR_AWARE_V2`。
 21. **共享桌面外部鼠标活动**：测试偶发 1~2px 光标漂移；已在阶段 2/5 测试中加入对照组区分，
     不归因于本程序。隔离测试干净运行时对照组与实验组均不变。
+
+## Phase 1.1 Review Fix 新增限制
+
+22. **Win32 查询异常分支只由 Mock 覆盖**：真实 Windows 下 `GetClassName` / `GetParent` /
+    `IsWindow` 异常极少发生，无法稳定复现实测。
+23. **RealChildWindowFromPoint 的 API 入参未在真实进程中逐字节断言**：Mock 验证了坐标转换链路，
+    真实记事本场景间接通过（插入符变化）。
+24. **DPI 查询失败场景仅 Mock 覆盖**：本机查询始终成功；未知状态标记为 UNKNOWN，
+    不冒充 PM aware。
