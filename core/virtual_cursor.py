@@ -12,7 +12,7 @@ from PySide6 import QtCore
 
 from config import settings
 from .coordinate import DesktopCoordinate
-from .input_backend import ClickResult, PostMessageBackend
+from .input_backend import ClickResult, ClickStatus, PostMessageBackend
 from .window_resolver import ResolvedTarget, WindowResolver
 
 logger = logging.getLogger(__name__)
@@ -128,8 +128,9 @@ class VirtualCursorController(QtCore.QObject):
         if not target.is_safe_target:
             self._log(f"点击取消：{target.reject_reason}", logging.WARNING)
             # 仍然给出结果对象，方便 UI 与报告记录拒绝原因。
-            from .input_backend import ClickResult  # 局部导入避免循环
-            result = ClickResult(coord=coord, target=target)
+            result = ClickResult(
+                coord=coord, target=target, status=ClickStatus.REJECTED_TARGET
+            )
             result.errors.append(f"目标被拒绝: {target.reject_reason}")
             self._last_click = result
             self.click_finished.emit(result)

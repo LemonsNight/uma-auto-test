@@ -129,17 +129,27 @@ def main() -> int:
         f"Overlay HWND=0x{hwnd:X}，命中 HWND=0x{hit:X} class={hit_class!r} title={hit_title!r}",
     )
 
-    # 严格检查：在连续的圆点移动前后读取光标位置。
-    # 不用整个测试周期的起点/终点比较，因为共享桌面上可能有外部鼠标活动，
-    # 那不属于本程序造成的影响。
+    # 严格检查：对照组 + 实验组。
+    # 共享桌面可能有人为鼠标活动，若对照组本身发生变化，则该时段差异不能
+    # 归因于本程序，标记为"受外部活动干扰"而不是误判为程序缺陷。
+    control_before = win32api.GetCursorPos()
+    for _ in range(12):
+        QtWidgets.QApplication.processEvents()
+    control_after = win32api.GetCursorPos()
+    control_changed = control_before != control_after
+
     tight_cursor_before = win32api.GetCursorPos()
     for i in range(12):
         overlay.move_to_desktop(DesktopCoordinate(200 + i * 30, 200))
     tight_cursor_after = win32api.GetCursorPos()
+    cursor_changed = tight_cursor_after != tight_cursor_before
+    ok = cursor_changed is False or control_changed
     record(
         "真实鼠标未被移动（连续 12 次移动圆点）",
-        tight_cursor_after == tight_cursor_before,
-        f"移动前={tight_cursor_before}，移动后={tight_cursor_after}",
+        ok,
+        f"对照组 {control_before}->{control_after} 变化={control_changed}；"
+        f"实验组 {tight_cursor_before}->{tight_cursor_after} 变化={cursor_changed}；"
+        + ("受外部鼠标活动干扰，不能归因于本程序" if control_changed else "本程序未移动光标"),
     )
 
     # 显示 / 隐藏

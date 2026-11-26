@@ -109,3 +109,19 @@
 
 源码、`requirements.txt`、`README.md`、本报告、分阶段报告与日志、`reports/screenshots/` 截图、
 `KNOWN_LIMITATIONS.md`。等待主 Agent 审查。
+
+---
+
+## 八、Phase 1.1 增补（2026-11-26）
+
+在 Phase 1 基础上完成基础安全性与输入可靠性修复，详细见 `PHASE_1_1_REPORT.md`。
+
+- 桌面拦截：`Progman` / `WorkerW` / `SHELLDLL_DefView` / 桌面 `SysListView32("FolderView")`
+  按父窗口链全部拒绝；普通应用 `SysListView32` 不按类名全局拒绝。
+  真实桌面冒烟 6/6 通过（只解析与移动圆点，未点击图标）。
+- 点击状态：新增 `ClickStatus`，分阶段记录 7 类结果；HWND 在消息间复查；
+  DOWN 失败不发 UP；UP 失败仅对原 HWND 补发释放并保留不确定状态。Mock 测试 12/12 通过。
+- 坐标安全：`ScreenToClient` 失败即拒绝；LPARAM 边界测试 5/5 通过；
+  DPI 感知按系统实际状态报告，未引入 PMv2。
+- 新增测试合计 34 个用例（11 + 12 + 5 + 6），全部通过；原有测试全部回归通过。
+- 未改变 PostMessage 唯一输入路径；未引入新依赖；未发现真实鼠标被程序移动。

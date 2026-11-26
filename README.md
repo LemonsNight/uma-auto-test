@@ -54,6 +54,20 @@ WindowFromPoint ->（必要时）子窗口 -> ScreenToClient
 **不代表目标程序处理了点击**，更不代表业务动作成功。
 日志与 UI 中始终将"入队成功"和"实际点击验证"分开记录。
 
+## Phase 1.1 安全加固（2026-11-26）
+
+- 桌面安全：`WindowResolver` 沿 `GetParent` 检查完整父窗口链；
+  `Progman` / `WorkerW` / `SHELLDLL_DefView` / 桌面 `SysListView32("FolderView")`
+  一律拒绝，普通应用中的 `SysListView32` 不受影响；父链异常时安全失败。
+- 点击状态：`ClickStatus` 明确区分目标拒绝、HWND 失效、LPARAM 越界、
+  MOUSEMOVE / DOWN / UP 失败与三条消息全部入队；HWND 在关键消息之间复查。
+  DOWN 失败不发正常 UP；DOWN 成功而 UP 失败时对原 HWND 补发释放并记录结果，
+  始终标记为按键释放不确定，绝不报告完整成功。
+- 坐标安全：`ScreenToClient` 失败即拒绝发送；DPI 感知按系统实际状态报告，
+  不冒充 PM aware；未引入 `PER_MONITOR_AWARE_V2`。
+
+详细见 `reports/PHASE_1_1_REPORT.md`。
+
 ## 目录结构
 
 ```

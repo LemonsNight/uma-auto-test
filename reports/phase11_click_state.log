@@ -1,0 +1,6 @@
+2026-11-26 17:30:59 [WARNING] core.input_backend:   [release_recovery] WM_LBUTTONUP HWND=0x1234 client=(100, 200) wParam=0x0 -> 入队成功
+2026-11-26 17:30:59 [ERROR] core.input_backend: WM_LBUTTONUP 前: HWND=0x1234 已失效
+2026-11-26 17:30:59 [ERROR] core.input_backend: 发送前: HWND=0x1234 已失效
+2026-11-26 17:30:59 [WARNING] core.input_backend: 拒绝点击 (500, 400): 模拟拒绝
+2026-11-26 17:30:59 [ERROR] core.input_backend: 坐标超出 LPARAM 范围，拒绝发送: 客户区坐标 (40000, 200) 超出鼠标消息 16 位有符号范围，拒绝发送
+2026-11-26 17:30:59 [WARNING] core.input_backend:   [release_recovery] WM_LBUTTONUP HWND=0x1234 client=(100, 200) wParam=0x0 -> 入队失败(GetLastError=5)

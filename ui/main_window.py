@@ -151,7 +151,9 @@ class MainWindow(QtWidgets.QWidget):
             return
         lines = [
             f"目标：{result.target.describe()}",
-            f"消息入队：{'全部成功' if result.all_messages_queued else '存在失败'}",
+            f"状态：{result.status.value}",
+            f"消息入队：{'全部成功' if result.all_messages_queued else '未全部成功'}",
+            f"按键释放不确定：{'是' if result.button_release_uncertain else '否'}",
             f"实际点击验证：{result.verification}",
         ]
         for err in result.errors:

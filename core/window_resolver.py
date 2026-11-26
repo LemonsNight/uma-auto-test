@@ -1,14 +1,21 @@
 """窗口解析与客户区坐标映射。
 
-全部基于 WindowFromPoint / RealChildWindowFromPoint / ScreenToClient，
+全部基于 WindowFromPoint /（必要时）RealChildWindowFromPoint / ScreenToClient，
 不触碰真实鼠标。
+
+Phase 1.1 安全加固：
+- 通过可注入的 WindowApi 包装 Win32 查询，便于用模拟窗口树做单元测试。
+- 解析目标时沿 GetParent 走完整父窗口链；只要链上出现 Progman / WorkerW /
+  SHELLDLL_DefView，或标题 "Program Manager"，即判定为系统桌面并拒绝。
+- SysListView32 不按类名全局拒绝；只有其祖先链包含桌面结构时才拒绝。
+- 父窗口链遍历异常、成环或超过深度上限时采用安全失败（拒绝）策略。
+- 坐标转换失败不再静默沿用屏幕坐标，而是拒绝发送。
 """
 
 from __future__ import annotations
 
 import ctypes
 import logging
-import time
 from ctypes import wintypes
 from dataclasses import dataclass, field
 
@@ -23,9 +30,11 @@ _user32 = ctypes.WinDLL("user32", use_last_error=True)
 _user32.RealChildWindowFromPoint.argtypes = [wintypes.HWND, wintypes.POINT]
 _user32.RealChildWindowFromPoint.restype = wintypes.HWND
 
-# 系统桌面相关窗口：绝不向其发送模拟点击。
-_DESKTOP_CLASSES = {"Progman", "WorkerW", "SHELLDLL_DefView"}
-_DESKTOP_TITLES = {"Program Manager"}
+# 系统桌面相关窗口类：链上出现即拒绝。
+_DESKTOP_ROOT_CLASSES = {"Progman", "WorkerW"}
+_DESKTOP_VIEW_CLASSES = {"SHELLDLL_DefView"}
+_DESKTOP_TITLE = "Program Manager"
+_MAX_CHAIN_DEPTH = 32
 
 # 已知可能受 UIPI / 系统保护限制的窗口类，只报告限制，不尝试绕过。
 _RESTRICTED_CLASS_PREFIXES = (
@@ -35,6 +44,60 @@ _RESTRICTED_CLASS_PREFIXES = (
     "Chrome_WidgetWin",
 )
 _RESTRICTED_CLASS_EXACT = {"Shell_TrayWnd", "Progman"}
+
+
+class WindowApi:
+    """Win32 窗口查询的薄包装；测试可替换为模拟实现。
+
+    只包含只读查询，不含任何输入发送能力。
+    """
+
+    def window_from_point(self, x: int, y: int) -> int:
+        return int(win32gui.WindowFromPoint((x, y)))
+
+    def real_child_window_from_point(self, hwnd: int, x: int, y: int) -> int:
+        raw = _user32.RealChildWindowFromPoint(
+            wintypes.HWND(hwnd), wintypes.POINT(x, y)
+        )
+        return int(raw) if raw else 0
+
+    def get_parent(self, hwnd: int) -> int:
+        return int(win32gui.GetParent(hwnd))
+
+    def get_ancestor(self, hwnd: int, flag: int) -> int:
+        return int(win32gui.GetAncestor(hwnd, flag))
+
+    def get_class_name(self, hwnd: int) -> str:
+        return win32gui.GetClassName(hwnd)
+
+    def get_window_text(self, hwnd: int) -> str:
+        return win32gui.GetWindowText(hwnd)
+
+    def is_window(self, hwnd: int) -> bool:
+        return bool(win32gui.IsWindow(hwnd))
+
+    def is_window_enabled(self, hwnd: int) -> bool:
+        return bool(win32gui.IsWindowEnabled(hwnd))
+
+    def get_window_rect(self, hwnd: int) -> tuple[int, int, int, int]:
+        return tuple(int(v) for v in win32gui.GetWindowRect(hwnd))
+
+    def screen_to_client(self, hwnd: int, x: int, y: int) -> tuple[int, int]:
+        cx, cy = win32gui.ScreenToClient(hwnd, (x, y))
+        return int(cx), int(cy)
+
+    def get_client_rect(self, hwnd: int) -> tuple[int, int, int, int]:
+        return tuple(int(v) for v in win32gui.GetClientRect(hwnd))
+
+
+@dataclass
+class ChainNode:
+    hwnd: int
+    class_name: str
+    title: str
+
+    def describe(self) -> str:
+        return f"0x{self.hwnd:X}[{self.class_name!r},{self.title!r}]"
 
 
 @dataclass
@@ -51,6 +114,8 @@ class ResolvedTarget:
     is_child_window: bool = False
     reject_reason: str | None = None
     notes: list[str] = field(default_factory=list)
+    chain: list[ChainNode] = field(default_factory=list)
+    chain_reliable: bool = True
 
     @property
     def is_safe_target(self) -> bool:
@@ -66,15 +131,17 @@ class ResolvedTarget:
 class CoordinateMapper:
     """桌面坐标 -> 目标窗口客户区坐标。"""
 
+    def __init__(self, api: WindowApi | None = None) -> None:
+        self.api = api or WindowApi()
+
     def screen_to_client(self, hwnd: int, coord: DesktopCoordinate) -> tuple[int, int]:
-        if not win32gui.IsWindow(hwnd):
+        if not self.api.is_window(hwnd):
             raise ValueError(f"HWND 0x{hwnd:X} 已失效，无法转换坐标")
-        x, y = win32gui.ScreenToClient(hwnd, (coord.x, coord.y))
-        return int(x), int(y)
+        return self.api.screen_to_client(hwnd, coord.x, coord.y)
 
     def is_in_client_area(self, hwnd: int, client_x: int, client_y: int) -> bool:
         try:
-            left, top, right, bottom = win32gui.GetClientRect(hwnd)
+            left, top, right, bottom = self.api.get_client_rect(hwnd)
         except Exception:
             return False
         return left <= client_x < right and top <= client_y < bottom
@@ -83,57 +150,69 @@ class CoordinateMapper:
 class WindowResolver:
     """按桌面坐标定位实际接收鼠标消息的窗口。"""
 
-    def __init__(self, mapper: CoordinateMapper | None = None,
-                 overlay_title: str = "VirtualMouse Overlay") -> None:
-        self.mapper = mapper or CoordinateMapper()
+    def __init__(
+        self,
+        mapper: CoordinateMapper | None = None,
+        overlay_title: str = "VirtualMouse Overlay",
+        api: WindowApi | None = None,
+    ) -> None:
+        self.api = api or WindowApi()
+        self.mapper = mapper or CoordinateMapper(api=self.api)
         self.overlay_title = overlay_title
 
     def resolve(self, coord: DesktopCoordinate) -> ResolvedTarget:
         notes: list[str] = []
 
-        hwnd = int(win32gui.WindowFromPoint((coord.x, coord.y)))
-        if not hwnd or not win32gui.IsWindow(hwnd):
+        hit_hwnd = self.api.window_from_point(coord.x, coord.y)
+        if not hit_hwnd or not self.api.is_window(hit_hwnd):
             return ResolvedTarget(
-                hwnd=hwnd, title="", class_name="", client_x=coord.x, client_y=coord.y,
+                hwnd=hit_hwnd, title="", class_name="", client_x=coord.x, client_y=coord.y,
                 root_hwnd=0, root_title="",
                 reject_reason="WindowFromPoint 未返回有效窗口",
             )
 
-        title = self._safe_window_text(hwnd)
-        class_name = self._safe_class_name(hwnd)
-
-        if title == self.overlay_title:
+        hit_title = self._safe_window_text(hit_hwnd)
+        hit_class = self._safe_class_name(hit_hwnd)
+        if hit_title == self.overlay_title:
             return ResolvedTarget(
-                hwnd=hwnd, title=title, class_name=class_name,
+                hwnd=hit_hwnd, title=hit_title, class_name=hit_class,
                 client_x=coord.x, client_y=coord.y,
-                root_hwnd=hwnd, root_title=title,
+                root_hwnd=hit_hwnd, root_title=hit_title,
                 reject_reason="命中 VirtualMouse 自身 Overlay（穿透失效？），拒绝发送",
             )
 
-        root_hwnd = int(win32gui.GetAncestor(hwnd, win32con.GA_ROOT)) or hwnd
+        root_hwnd = self.api.get_ancestor(hit_hwnd, win32con.GA_ROOT) or hit_hwnd
         root_title = self._safe_window_text(root_hwnd)
+
+        # 命中链安全检查：在定位子窗口之前先判断命中窗口是否属于桌面。
+        hit_reason = self._safety_reject_reason(hit_hwnd, "WindowFromPoint 命中")
+        if hit_reason:
+            chain, reliable = self._walk_chain(hit_hwnd)
+            return ResolvedTarget(
+                hwnd=hit_hwnd, title=hit_title, class_name=hit_class,
+                client_x=coord.x, client_y=coord.y,
+                root_hwnd=root_hwnd, root_title=root_title,
+                reject_reason=hit_reason, chain=chain, chain_reliable=reliable,
+                notes=notes,
+            )
 
         # WindowFromPoint 本身返回的就是命中测试选定的窗口（现代记事本中
         # 是 RichEditD2DPT），通常已是实际接收鼠标消息的子窗口，应优先保留。
         # 只有当它返回顶层窗口时，才用 RealChildWindowFromPoint 进一步定位。
-        target_hwnd = hwnd
-        is_child = hwnd != root_hwnd
+        target_hwnd = hit_hwnd
+        is_child = hit_hwnd != root_hwnd
         if is_child:
             notes.append(
-                f"WindowFromPoint 命中子窗口 HWND=0x{hwnd:X} class={class_name!r}"
+                f"WindowFromPoint 命中子窗口 HWND=0x{hit_hwnd:X} class={hit_class!r}"
             )
         else:
             try:
-                raw_child = _user32.RealChildWindowFromPoint(
-                    wintypes.HWND(root_hwnd), wintypes.POINT(coord.x, coord.y)
-                )
-                child = int(raw_child) if raw_child else 0
-                if child and child != root_hwnd and win32gui.IsWindow(child):
+                child = self.api.real_child_window_from_point(root_hwnd, coord.x, coord.y)
+                if child and child != root_hwnd and self.api.is_window(child):
                     child_class = self._safe_class_name(child)
                     child_title = self._safe_window_text(child)
-                    # 忽略零尺寸/不包含该点的输入占位子窗口。
                     try:
-                        cl, ct, cr, cb = win32gui.GetWindowRect(child)
+                        cl, ct, cr, cb = self.api.get_window_rect(child)
                     except Exception:
                         cl = ct = cr = cb = 0
                     if (
@@ -141,33 +220,46 @@ class WindowResolver:
                         and cb > ct
                         and cl <= coord.x < cr
                         and ct <= coord.y < cb
-                        and child_class not in _DESKTOP_CLASSES
                         and child_title != self.overlay_title
                     ):
-                        target_hwnd = child
-                        is_child = True
-                        notes.append(
-                            f"定位到子窗口 HWND=0x{child:X} class={child_class!r} "
-                            f"title={child_title!r}"
-                        )
+                        # 子窗口同样要做桌面链检查，不能因为父级已通过就跳过。
+                        child_reason = self._safety_reject_reason(child, "候选子窗口")
+                        if child_reason:
+                            notes.append(f"候选子窗口被拒绝: {child_reason}")
+                        else:
+                            target_hwnd = child
+                            is_child = True
+                            notes.append(
+                                f"定位到子窗口 HWND=0x{child:X} class={child_class!r} "
+                                f"title={child_title!r}"
+                            )
             except Exception as exc:
                 notes.append(f"RealChildWindowFromPoint 不可用: {exc}")
 
         target_title = self._safe_window_text(target_hwnd)
         target_class = self._safe_class_name(target_hwnd)
+        chain, reliable = self._walk_chain(target_hwnd)
 
+        reject_reason = self._safety_reject_reason(target_hwnd, "最终目标")
+        if not reject_reason:
+            if not self.api.is_window(target_hwnd):
+                reject_reason = "窗口句柄在解析过程中失效"
+            elif not self.api.is_window_enabled(target_hwnd):
+                reject_reason = "目标窗口被禁用（IsWindowEnabled=False），可能被系统保护"
+
+        # 坐标转换失败必须拒绝，不能静默沿用屏幕坐标继续发送。
         try:
             client_x, client_y = self.mapper.screen_to_client(target_hwnd, coord)
         except Exception as exc:
+            reject_reason = reject_reason or f"桌面坐标转客户区坐标失败: {exc}"
             notes.append(f"坐标转换失败: {exc}")
             client_x, client_y = coord.x, coord.y
-
-        reject_reason = self._check_reject(target_class, target_title, target_hwnd)
-        if not self.mapper.is_in_client_area(target_hwnd, client_x, client_y):
-            notes.append(
-                f"转换后坐标 ({client_x}, {client_y}) 不在客户区内，"
-                "目标程序可能忽略该消息"
-            )
+        else:
+            if not self.mapper.is_in_client_area(target_hwnd, client_x, client_y):
+                notes.append(
+                    f"转换后坐标 ({client_x}, {client_y}) 不在客户区内，"
+                    "目标程序可能忽略该消息"
+                )
 
         for prefix in _RESTRICTED_CLASS_PREFIXES:
             if target_class.startswith(prefix):
@@ -190,19 +282,79 @@ class WindowResolver:
             is_child_window=is_child,
             reject_reason=reject_reason,
             notes=notes,
+            chain=chain,
+            chain_reliable=reliable,
         )
         logger.info("解析坐标 %s -> %s", coord, result.describe())
+        for node in chain:
+            logger.debug("  链: %s", node.describe())
         for note in notes:
             logger.info("  note: %s", note)
         if reject_reason:
             logger.warning("拒绝目标: %s", reject_reason)
         return result
 
+    # ---------- 安全判定 ----------
+    def _walk_chain(self, hwnd: int) -> tuple[list[ChainNode], bool]:
+        """沿 GetParent 向上遍历，返回 (链, 是否可靠)。异常/成环/超深视为不可靠。"""
+        chain: list[ChainNode] = []
+        seen: set[int] = set()
+        current = hwnd
+        try:
+            for _ in range(_MAX_CHAIN_DEPTH):
+                if not current:
+                    return chain, True
+                if current in seen:
+                    return chain, False
+                seen.add(current)
+                if not self.api.is_window(current):
+                    return chain, False
+                chain.append(
+                    ChainNode(
+                        hwnd=current,
+                        class_name=self._safe_class_name(current),
+                        title=self._safe_window_text(current),
+                    )
+                )
+                parent = self.api.get_parent(current)
+                if not parent:
+                    return chain, True
+                current = parent
+        except Exception as exc:
+            logger.warning("父窗口链遍历异常 HWND=0x%X: %s", hwnd, exc)
+            return chain, False
+        return chain, False
+
+    def _safety_reject_reason(self, hwnd: int, stage: str) -> str | None:
+        chain, reliable = self._walk_chain(hwnd)
+        if not reliable:
+            return (
+                f"{stage}: 父窗口链不可靠（异常/成环/超深/句柄失效），"
+                "按安全失败策略拒绝发送"
+            )
+        classes = [node.class_name for node in chain]
+        titles = [node.title for node in chain]
+        if any(cls in _DESKTOP_ROOT_CLASSES for cls in classes):
+            return f"{stage}: 父窗口链包含系统桌面窗口类 {sorted(_DESKTOP_ROOT_CLASSES)}，拒绝发送"
+        if any(cls in _DESKTOP_VIEW_CLASSES for cls in classes):
+            return f"{stage}: 父窗口链包含 SHELLDLL_DefView（桌面视图），拒绝发送"
+        if _DESKTOP_TITLE in titles:
+            return f"{stage}: 父窗口链包含标题 {_DESKTOP_TITLE!r}，拒绝发送"
+        # SysListView32 只在确认属于桌面结构时拒绝；普通应用中的同类名不拒绝。
+        target_class = classes[0] if classes else ""
+        if target_class == "SysListView32" and (
+            "SHELLDLL_DefView" in classes
+            or any(cls in _DESKTOP_ROOT_CLASSES for cls in classes)
+        ):
+            return f"{stage}: 桌面图标列表 SysListView32，拒绝发送"
+        return None
+
     @staticmethod
     def _check_reject(class_name: str, title: str, hwnd: int) -> str | None:
-        if class_name in _DESKTOP_CLASSES:
+        """兼容旧调用的即时检查（不含父窗口链）。"""
+        if class_name in _DESKTOP_ROOT_CLASSES or class_name in _DESKTOP_VIEW_CLASSES:
             return f"系统桌面窗口 class={class_name!r}，禁止发送模拟点击"
-        if title in _DESKTOP_TITLES:
+        if title == _DESKTOP_TITLE:
             return f"系统桌面窗口 title={title!r}，禁止发送模拟点击"
         if not win32gui.IsWindow(hwnd):
             return "窗口句柄在解析过程中失效"
@@ -210,16 +362,14 @@ class WindowResolver:
             return "目标窗口被禁用（IsWindowEnabled=False），可能被系统保护"
         return None
 
-    @staticmethod
-    def _safe_window_text(hwnd: int) -> str:
+    def _safe_window_text(self, hwnd: int) -> str:
         try:
-            return win32gui.GetWindowText(hwnd)
+            return self.api.get_window_text(hwnd)
         except Exception:
             return ""
 
-    @staticmethod
-    def _safe_class_name(hwnd: int) -> str:
+    def _safe_class_name(self, hwnd: int) -> str:
         try:
-            return win32gui.GetClassName(hwnd)
+            return self.api.get_class_name(hwnd)
         except Exception:
             return ""

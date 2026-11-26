@@ -1,48 +1,58 @@
-2026-11-26 17:02:18 [INFO] root: [PASS] LPARAM 编解码（含负坐标） :: 4 组坐标往返一致
-2026-11-26 17:02:18 [INFO] root: [PASS] LPARAM 越界拒绝 :: 超出 16 位有符号范围时抛出 ValueError
-2026-11-26 17:02:18 [INFO] root: [PASS] 禁用输入 API 静态检查 :: 命中=[]
-2026-11-26 17:02:19 [INFO] core.window_resolver: 解析坐标 (199, 999) -> HWND=0x31DD8 class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99)
-2026-11-26 17:02:19 [INFO] root: [PASS] WindowFromPoint 解析到测试窗口 :: HWND=0x31DD8 class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99) reject=None
-2026-11-26 17:02:19 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x31DD8 client=(159, 99) wParam=0x0 -> 入队成功
-2026-11-26 17:02:19 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x31DD8 client=(159, 99) wParam=0x1 -> 入队成功
-2026-11-26 17:02:19 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x31DD8 client=(159, 99) wParam=0x0 -> 入队成功
-2026-11-26 17:02:19 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
-2026-11-26 17:02:19 [INFO] root: [PASS] PostMessage 三条消息顺序与 wParam :: ids=['0x200', '0x201', '0x202'] wparams=['0x0', '0x1', '0x0']
-2026-11-26 17:02:19 [INFO] root: [PASS] PostMessage 全部入队成功 :: 点击 (199, 999) -> HWND=0x31DD8 class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99)
-  消息入队: 全部成功
-    WM_MOUSEMOVE HWND=0x31DD8 client=(159, 99) wParam=0x0 -> 入队成功
-    WM_LBUTTONDOWN HWND=0x31DD8 client=(159, 99) wParam=0x1 -> 入队成功
-    WM_LBUTTONUP HWND=0x31DD8 client=(159, 99) wParam=0x0 -> 入队成功
+2026-11-26 17:30:58 [INFO] root: [PASS] LPARAM 编解码（含负坐标） :: 4 组坐标往返一致
+2026-11-26 17:30:58 [INFO] root: [PASS] LPARAM 越界拒绝 :: 超出 16 位有符号范围时抛出 ValueError
+2026-11-26 17:30:58 [INFO] root: [PASS] 禁用输入 API 静态检查 :: 命中=[]
+2026-11-26 17:30:58 [INFO] core.window_resolver: 解析坐标 (199, 999) -> HWND=0x51E1C class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99)
+2026-11-26 17:30:58 [INFO] root: [PASS] WindowFromPoint 解析到测试窗口 :: HWND=0x51E1C class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99) reject=None
+2026-11-26 17:30:58 [INFO] core.input_backend:   [primary] WM_MOUSEMOVE HWND=0x51E1C client=(159, 99) wParam=0x0 -> 入队成功
+2026-11-26 17:30:58 [INFO] core.input_backend:   [primary] WM_LBUTTONDOWN HWND=0x51E1C client=(159, 99) wParam=0x1 -> 入队成功
+2026-11-26 17:30:58 [INFO] core.input_backend:   [primary] WM_LBUTTONUP HWND=0x51E1C client=(159, 99) wParam=0x0 -> 入队成功
+2026-11-26 17:30:58 [INFO] core.input_backend: 三条消息全部入队，但这**不等于**目标程序已处理点击。
+2026-11-26 17:30:58 [INFO] root: [PASS] PostMessage 三条消息顺序与 wParam :: ids=['0x200', '0x201', '0x202'] wparams=['0x0', '0x1', '0x0']
+2026-11-26 17:30:58 [INFO] root: [PASS] PostMessage 全部入队成功 :: 点击 (199, 999) -> HWND=0x51E1C class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99)
+  状态: complete_queued
+  三条主消息全部入队: 是
+  按键释放状态不确定: 否
+  HWND 检查: 发送前: HWND=0x51E1C valid=True
+  HWND 检查: WM_LBUTTONDOWN 前: HWND=0x51E1C valid=True
+  HWND 检查: WM_LBUTTONUP 前: HWND=0x51E1C valid=True
+    [primary] WM_MOUSEMOVE HWND=0x51E1C client=(159, 99) wParam=0x0 -> 入队成功
+    [primary] WM_LBUTTONDOWN HWND=0x51E1C client=(159, 99) wParam=0x1 -> 入队成功
+    [primary] WM_LBUTTONUP HWND=0x51E1C client=(159, 99) wParam=0x0 -> 入队成功
   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
-2026-11-26 17:02:19 [INFO] root: [PASS] 入队成功与实际验证严格区分 :: 未验证（仅确认消息入队；实际点击需外部证据）
-2026-11-26 17:02:19 [INFO] root: [PASS] 拒绝向系统桌面窗口发送点击 :: reason=系统桌面窗口 class='Progman'，禁止发送模拟点击
-2026-11-26 17:02:19 [INFO] core.virtual_cursor: 控制器已启动
-2026-11-26 17:02:19 [INFO] root: [PASS] 启动后状态 running :: running
-2026-11-26 17:02:19 [INFO] core.virtual_cursor: 已暂停：后续点击将被拒绝，圆点仍可手动移动
-2026-11-26 17:02:19 [WARNING] core.virtual_cursor: 已暂停，拒绝点击
-2026-11-26 17:02:19 [INFO] root: [PASS] 暂停时拒绝点击 :: state=paused
-2026-11-26 17:02:19 [INFO] core.virtual_cursor: 已恢复运行
-2026-11-26 17:02:19 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (199, 999)
-2026-11-26 17:02:19 [INFO] core.window_resolver: 解析坐标 (199, 999) -> HWND=0x31DD8 class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99)
-2026-11-26 17:02:19 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x31DD8 client=(159, 99) wParam=0x0 -> 入队成功
-2026-11-26 17:02:19 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x31DD8 client=(159, 99) wParam=0x1 -> 入队成功
-2026-11-26 17:02:19 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x31DD8 client=(159, 99) wParam=0x0 -> 入队成功
-2026-11-26 17:02:19 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
-2026-11-26 17:02:19 [INFO] core.virtual_cursor: 点击 (199, 999) -> HWND=0x31DD8 class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99)
-2026-11-26 17:02:19 [INFO] core.virtual_cursor:   消息入队: 全部成功
-2026-11-26 17:02:19 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x31DD8 client=(159, 99) wParam=0x0 -> 入队成功
-2026-11-26 17:02:19 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x31DD8 client=(159, 99) wParam=0x1 -> 入队成功
-2026-11-26 17:02:19 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x31DD8 client=(159, 99) wParam=0x0 -> 入队成功
-2026-11-26 17:02:19 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
-2026-11-26 17:02:19 [INFO] root: [PASS] 恢复后允许点击 :: state=running
-2026-11-26 17:02:19 [CRITICAL] core.virtual_cursor: [测试] 紧急停止：状态 running -> stopped，后续操作全部拒绝
-2026-11-26 17:02:19 [WARNING] core.virtual_cursor: 紧急停止中，拒绝点击
-2026-11-26 17:02:19 [WARNING] core.virtual_cursor: 紧急停止中，拒绝移动
-2026-11-26 17:02:19 [INFO] root: [PASS] 紧急停止立即拒绝点击与移动 :: state=stopped click=None move=False
-2026-11-26 17:02:19 [INFO] core.virtual_cursor: 已复位，恢复运行
-2026-11-26 17:02:19 [INFO] root: [PASS] 复位后恢复运行 :: running
-2026-11-26 17:02:19 [INFO] core.hotkey: 全局紧急停止热键已注册: Ctrl+Alt+Shift+K
-2026-11-26 17:02:19 [INFO] root: [PASS] 全局热键注册 :: label=Ctrl+Alt+Shift+K registered=True
-2026-11-26 17:02:19 [CRITICAL] core.virtual_cursor: [测试热键触发] 紧急停止：状态 running -> stopped，后续操作全部拒绝
-2026-11-26 17:02:19 [INFO] root: [PASS] 全局热键触发紧急停止 :: 模拟投递=True state=stopped
-2026-11-26 17:02:19 [INFO] core.hotkey: 全局热键已注销
+2026-11-26 17:30:58 [INFO] root: [PASS] 入队成功与实际验证严格区分 :: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:30:58 [INFO] root: [PASS] 拒绝向系统桌面窗口发送点击 :: reason=系统桌面窗口 class='Progman'，禁止发送模拟点击
+2026-11-26 17:30:58 [INFO] core.virtual_cursor: 控制器已启动
+2026-11-26 17:30:58 [INFO] root: [PASS] 启动后状态 running :: running
+2026-11-26 17:30:58 [INFO] core.virtual_cursor: 已暂停：后续点击将被拒绝，圆点仍可手动移动
+2026-11-26 17:30:58 [WARNING] core.virtual_cursor: 已暂停，拒绝点击
+2026-11-26 17:30:58 [INFO] root: [PASS] 暂停时拒绝点击 :: state=paused
+2026-11-26 17:30:58 [INFO] core.virtual_cursor: 已恢复运行
+2026-11-26 17:30:58 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (199, 999)
+2026-11-26 17:30:58 [INFO] core.window_resolver: 解析坐标 (199, 999) -> HWND=0x51E1C class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99)
+2026-11-26 17:30:58 [INFO] core.input_backend:   [primary] WM_MOUSEMOVE HWND=0x51E1C client=(159, 99) wParam=0x0 -> 入队成功
+2026-11-26 17:30:58 [INFO] core.input_backend:   [primary] WM_LBUTTONDOWN HWND=0x51E1C client=(159, 99) wParam=0x1 -> 入队成功
+2026-11-26 17:30:58 [INFO] core.input_backend:   [primary] WM_LBUTTONUP HWND=0x51E1C client=(159, 99) wParam=0x0 -> 入队成功
+2026-11-26 17:30:58 [INFO] core.input_backend: 三条消息全部入队，但这**不等于**目标程序已处理点击。
+2026-11-26 17:30:58 [INFO] core.virtual_cursor: 点击 (199, 999) -> HWND=0x51E1C class='Qt6120QWindowIcon' title='PostMessage Test Target' client=(159, 99)
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:   状态: complete_queued
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:   三条主消息全部入队: 是
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:   按键释放状态不确定: 否
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:   HWND 检查: 发送前: HWND=0x51E1C valid=True
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:   HWND 检查: WM_LBUTTONDOWN 前: HWND=0x51E1C valid=True
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:   HWND 检查: WM_LBUTTONUP 前: HWND=0x51E1C valid=True
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:     [primary] WM_MOUSEMOVE HWND=0x51E1C client=(159, 99) wParam=0x0 -> 入队成功
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:     [primary] WM_LBUTTONDOWN HWND=0x51E1C client=(159, 99) wParam=0x1 -> 入队成功
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:     [primary] WM_LBUTTONUP HWND=0x51E1C client=(159, 99) wParam=0x0 -> 入队成功
+2026-11-26 17:30:58 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:30:58 [INFO] root: [PASS] 恢复后允许点击 :: state=running
+2026-11-26 17:30:58 [CRITICAL] core.virtual_cursor: [测试] 紧急停止：状态 running -> stopped，后续操作全部拒绝
+2026-11-26 17:30:58 [WARNING] core.virtual_cursor: 紧急停止中，拒绝点击
+2026-11-26 17:30:58 [WARNING] core.virtual_cursor: 紧急停止中，拒绝移动
+2026-11-26 17:30:58 [INFO] root: [PASS] 紧急停止立即拒绝点击与移动 :: state=stopped click=None move=False
+2026-11-26 17:30:58 [INFO] core.virtual_cursor: 已复位，恢复运行
+2026-11-26 17:30:58 [INFO] root: [PASS] 复位后恢复运行 :: running
+2026-11-26 17:30:58 [INFO] core.hotkey: 全局紧急停止热键已注册: Ctrl+Alt+Shift+K
+2026-11-26 17:30:58 [INFO] root: [PASS] 全局热键注册 :: label=Ctrl+Alt+Shift+K registered=True
+2026-11-26 17:30:58 [CRITICAL] core.virtual_cursor: [测试热键触发] 紧急停止：状态 running -> stopped，后续操作全部拒绝
+2026-11-26 17:30:58 [INFO] root: [PASS] 全局热键触发紧急停止 :: 模拟投递=True state=stopped
+2026-11-26 17:30:58 [INFO] core.hotkey: 全局热键已注销

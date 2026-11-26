@@ -334,16 +334,28 @@ def main() -> int:
                "浏览器前台后找不到仍可见的记事本文本区坐标，场景未验证")
         browser_point = foreground_point
     else:
+        # 对照组：同一时段不做任何程序动作，识别共享桌面的外部鼠标活动。
+        # 与实验组保持相同时长，确保对照组可比。
+        control_before = win32api.GetCursorPos()
+        time.sleep(0.4)
+        for _ in range(6):
+            app.processEvents()
+        control_after = win32api.GetCursorPos()
+        control_changed = control_before != control_after
+
         cursor_before = win32api.GetCursorPos()
         foreground_before = int(user32.GetForegroundWindow())
         q3, v3, _ = click_and_measure(browser_point, "浏览器前台时对记事本点击")
         cursor_after = win32api.GetCursorPos()
         foreground_after2 = int(user32.GetForegroundWindow())
+        cursor_changed = cursor_after != cursor_before
         record(
-            "真实鼠标未被移动（连续点击前后紧邻采样）",
+            "真实鼠标未被移动（对照组 + 点击前后采样）",
             None, None,
-            f"点击前光标={cursor_before} 点击后光标={cursor_after} "
-            f"一致={cursor_before == cursor_after}",
+            f"对照组 {control_before}->{control_after} 变化={control_changed}；"
+            f"实验组 {cursor_before}->{cursor_after} 变化={cursor_changed}；"
+            + ("受外部鼠标活动干扰，不能归因于本程序" if control_changed
+               else ("本程序未移动光标" if not cursor_changed else "需排查")),
         )
         record(
             "前台窗口未被 PostMessage 抢走",

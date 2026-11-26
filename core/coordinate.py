@@ -22,33 +22,73 @@ _DPI_MODE_NONE = -1
 _current_mode: int = _DPI_MODE_NONE
 
 
+def query_actual_dpi_awareness() -> int | None:
+    """查询系统记录的当前进程 DPI 感知级别；无法查询时返回 None。
+
+    用于校验"设置调用成功"之外的事实状态，避免误报。
+    """
+    # Windows 10 1607+：从线程 DPI 感知上下文读取。
+    try:
+        context = ctypes.windll.user32.GetThreadDpiAwarenessContext()
+        if context:
+            value = ctypes.windll.user32.GetAwarenessFromDpiAwarenessContext(context)
+            if value in (
+                DpiAwareness.UNAWARE,
+                DpiAwareness.SYSTEM_AWARE,
+                DpiAwareness.PER_MONITOR_AWARE,
+            ):
+                return int(value)
+    except Exception:
+        pass
+    # Windows 8.1+：shcore 查询进程级设置。
+    try:
+        value = ctypes.c_int()
+        hr = ctypes.windll.shcore.GetProcessDpiAwareness(
+            None, ctypes.byref(value)
+        )
+        if hr == 0:
+            return int(value.value)
+    except Exception:
+        pass
+    return None
+
+
 def enable_per_monitor_dpi_awareness() -> str:
     """把当前进程设为 Per-Monitor DPI Aware，返回实际采用方式的说明。
 
     只影响本进程，不修改系统设置。重复调用是安全的。
+
+    Phase 1.1：设置调用失败时查询系统实际状态，绝不因为调用返回而
+    错误声称处于 PER_MONITOR_DPI_AWARE。不引入 PER_MONITOR_AWARE_V2。
     """
     global _current_mode
     if _current_mode != _DPI_MODE_NONE:
         return _dpi_mode_label(_current_mode)
 
+    requested = False
     # Windows 10 1607+ 首选 shcore API。
     try:
         hr = ctypes.windll.shcore.SetProcessDpiAwareness(DpiAwareness.PER_MONITOR_AWARE)
-        if hr == 0:
-            _current_mode = DpiAwareness.PER_MONITOR_AWARE
-            return _dpi_mode_label(_current_mode)
+        requested = hr == 0
     except Exception:
         pass
 
-    # 兼容旧系统。
-    try:
-        if ctypes.windll.user32.SetProcessDPIAware():
-            _current_mode = DpiAwareness.SYSTEM_AWARE
-            return _dpi_mode_label(_current_mode)
-    except Exception:
-        pass
+    # 兼容旧系统：仅在上一步未成功时尝试。
+    if not requested:
+        try:
+            requested = bool(ctypes.windll.user32.SetProcessDPIAware())
+        except Exception:
+            pass
 
-    _current_mode = DpiAwareness.UNAWARE
+    actual = query_actual_dpi_awareness()
+    if actual is not None:
+        _current_mode = actual
+        return _dpi_mode_label(actual)
+
+    # 无法查询实际状态时，只按成功调用的结果报告，不冒充 PM aware。
+    _current_mode = (
+        DpiAwareness.PER_MONITOR_AWARE if requested else DpiAwareness.UNAWARE
+    )
     return _dpi_mode_label(_current_mode)
 
 

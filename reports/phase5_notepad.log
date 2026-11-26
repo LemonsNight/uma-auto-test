@@ -1,62 +1,75 @@
-2026-11-26 17:02:20 [INFO] core.virtual_cursor: 控制器已启动
-2026-11-26 17:02:21 [INFO] overlay.overlay_window: Overlay move: target=(126, 215) rect=(102, 191, 150, 239) center=(126, 215) verified=True
-2026-11-26 17:02:21 [INFO] overlay.overlay_window: Overlay move: target=(126, 215) rect=(102, 191, 150, 239) center=(126, 215) verified=True
-2026-11-26 17:02:21 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (126, 215)
-2026-11-26 17:02:21 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (126, 215)
-2026-11-26 17:02:21 [INFO] core.window_resolver: 解析坐标 (126, 215) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 60)
-2026-11-26 17:02:21 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x2512BE class='RichEditD2DPT'
-2026-11-26 17:02:21 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x2512BE client=(40, 60) wParam=0x0 -> 入队成功
-2026-11-26 17:02:21 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x2512BE client=(40, 60) wParam=0x1 -> 入队成功
-2026-11-26 17:02:21 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x2512BE client=(40, 60) wParam=0x0 -> 入队成功
-2026-11-26 17:02:21 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
-2026-11-26 17:02:21 [INFO] core.virtual_cursor: 点击 (126, 215) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 60)
-2026-11-26 17:02:21 [INFO] core.virtual_cursor:   消息入队: 全部成功
-2026-11-26 17:02:21 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x2512BE client=(40, 60) wParam=0x0 -> 入队成功
-2026-11-26 17:02:21 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x2512BE client=(40, 60) wParam=0x1 -> 入队成功
-2026-11-26 17:02:21 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x2512BE client=(40, 60) wParam=0x0 -> 入队成功
-2026-11-26 17:02:21 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
-2026-11-26 17:02:21 [INFO] phase5: [记录] 记事本前台点击 :: 坐标=(126, 215) 圆点中心=(126, 215) 目标=HWND 0x2512BE class='RichEditD2DPT' title='' 入队=True 插入符 (0, 0)->(44, 44) 实际点击=True
-2026-11-26 17:02:21 [INFO] phase5: [记录] 圆点位置与点击坐标一致（前台） :: 圆点中心=(126, 215) 点击坐标=(126, 215) 一致=True
-2026-11-26 17:02:23 [INFO] overlay.overlay_window: Overlay move: target=(126, 250) rect=(102, 226, 150, 274) center=(126, 250) verified=True
-2026-11-26 17:02:23 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (126, 250)
-2026-11-26 17:02:23 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (126, 250)
-2026-11-26 17:02:23 [INFO] core.window_resolver: 解析坐标 (126, 250) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 95)
-2026-11-26 17:02:23 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x2512BE class='RichEditD2DPT'
-2026-11-26 17:02:23 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x2512BE client=(40, 95) wParam=0x0 -> 入队成功
-2026-11-26 17:02:23 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x2512BE client=(40, 95) wParam=0x1 -> 入队成功
-2026-11-26 17:02:23 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x2512BE client=(40, 95) wParam=0x0 -> 入队成功
-2026-11-26 17:02:23 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
-2026-11-26 17:02:23 [INFO] core.virtual_cursor: 点击 (126, 250) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 95)
-2026-11-26 17:02:23 [INFO] core.virtual_cursor:   消息入队: 全部成功
-2026-11-26 17:02:23 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x2512BE client=(40, 95) wParam=0x0 -> 入队成功
-2026-11-26 17:02:23 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x2512BE client=(40, 95) wParam=0x1 -> 入队成功
-2026-11-26 17:02:23 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x2512BE client=(40, 95) wParam=0x0 -> 入队成功
-2026-11-26 17:02:23 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
-2026-11-26 17:02:23 [INFO] phase5: [记录] 记事本被部分遮挡时点击 :: 坐标=(126, 250) 圆点中心=(126, 250) 目标=HWND 0x2512BE class='RichEditD2DPT' title='' 入队=True 插入符 (0, 0)->(44, 44) 实际点击=True
-2026-11-26 17:02:23 [INFO] phase5: [记录] 遮挡时前台确实不是记事本 :: 遮挡窗口 HWND=0x51EDA 切换后前台=0x51EDA 遮挡期间前台=0x51EDA 记事本=0x3511E0 成立=True
-2026-11-26 17:02:23 [INFO] phase5: [记录] 遮挡点击未改变前台窗口 :: 遮挡后前台=0x51EDA 点击后前台=0x51EDA 一致=True
-2026-11-26 17:02:24 [INFO] core.window_resolver: 解析坐标 (126, 215) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(126, 302)
-2026-11-26 17:02:24 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
-2026-11-26 17:02:24 [INFO] phase5: [记录] 记事本最小化时的行为 :: IsIconic=True 最小化后窗口矩形=(-32000, -32000, -31840, -31972)；原坐标 (126, 215) 解析为 HWND=0x20CBE class='SysListView32'（不是记事本）；本程序按桌面坐标工作，无法向已最小化的记事本目标区域发送点击，且拒绝向系统桌面窗口发送。
-2026-11-26 17:02:27 [INFO] phase5: [记录] 浏览器已置于前台（前置条件） :: 浏览器 HWND=0x4027C title='新聊天 - Google Chrome' 切换后前台=0x4027C 成功=True
-2026-11-26 17:02:27 [INFO] overlay.overlay_window: Overlay move: target=(2799, 362) rect=(2763, 326, 2835, 398) center=(2799, 362) verified=True
-2026-11-26 17:02:27 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (2799, 362)
-2026-11-26 17:02:27 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (2799, 362)
-2026-11-26 17:02:27 [INFO] core.window_resolver: 解析坐标 (2799, 362) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 130)
-2026-11-26 17:02:27 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x2512BE class='RichEditD2DPT'
-2026-11-26 17:02:27 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x2512BE client=(40, 130) wParam=0x0 -> 入队成功
-2026-11-26 17:02:27 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x2512BE client=(40, 130) wParam=0x1 -> 入队成功
-2026-11-26 17:02:27 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x2512BE client=(40, 130) wParam=0x0 -> 入队成功
-2026-11-26 17:02:27 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
-2026-11-26 17:02:27 [INFO] core.virtual_cursor: 点击 (2799, 362) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 130)
-2026-11-26 17:02:27 [INFO] core.virtual_cursor:   消息入队: 全部成功
-2026-11-26 17:02:27 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x2512BE client=(40, 130) wParam=0x0 -> 入队成功
-2026-11-26 17:02:27 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x2512BE client=(40, 130) wParam=0x1 -> 入队成功
-2026-11-26 17:02:27 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x2512BE client=(40, 130) wParam=0x0 -> 入队成功
-2026-11-26 17:02:27 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
-2026-11-26 17:02:27 [INFO] phase5: [记录] 浏览器前台时对记事本点击 :: 坐标=(2799, 362) 圆点中心=(2799, 362) 目标=HWND 0x2512BE class='RichEditD2DPT' title='' 入队=True 插入符 (0, 0)->(43, 43) 实际点击=True
-2026-11-26 17:02:27 [INFO] phase5: [记录] 真实鼠标未被移动（连续点击前后紧邻采样） :: 点击前光标=(1419, 0) 点击后光标=(1419, 0) 一致=True
-2026-11-26 17:02:27 [INFO] phase5: [记录] 前台窗口未被 PostMessage 抢走 :: 点击前前台=0x4027C 点击后前台=0x4027C 一致=True（浏览器前置条件成立）
-2026-11-26 17:02:27 [CRITICAL] core.virtual_cursor: [阶段 5 测试] 紧急停止：状态 running -> stopped，后续操作全部拒绝
-2026-11-26 17:02:27 [WARNING] core.virtual_cursor: 紧急停止中，拒绝点击
-2026-11-26 17:02:27 [INFO] phase5: [记录] 紧急停止后立即拒绝后续点击 :: state=stopped 返回值=None
+2026-11-26 17:31:04 [INFO] core.virtual_cursor: 控制器已启动
+2026-11-26 17:31:04 [INFO] overlay.overlay_window: Overlay move: target=(126, 215) rect=(102, 191, 150, 239) center=(126, 215) verified=True
+2026-11-26 17:31:04 [INFO] overlay.overlay_window: Overlay move: target=(126, 215) rect=(102, 191, 150, 239) center=(126, 215) verified=True
+2026-11-26 17:31:04 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (126, 215)
+2026-11-26 17:31:04 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (126, 215)
+2026-11-26 17:31:04 [INFO] core.window_resolver: 解析坐标 (126, 215) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 60)
+2026-11-26 17:31:04 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x2512BE class='RichEditD2DPT'
+2026-11-26 17:31:04 [INFO] core.input_backend:   [primary] WM_MOUSEMOVE HWND=0x2512BE client=(40, 60) wParam=0x0 -> 入队成功
+2026-11-26 17:31:04 [INFO] core.input_backend:   [primary] WM_LBUTTONDOWN HWND=0x2512BE client=(40, 60) wParam=0x1 -> 入队成功
+2026-11-26 17:31:04 [INFO] core.input_backend:   [primary] WM_LBUTTONUP HWND=0x2512BE client=(40, 60) wParam=0x0 -> 入队成功
+2026-11-26 17:31:04 [INFO] core.input_backend: 三条消息全部入队，但这**不等于**目标程序已处理点击。
+2026-11-26 17:31:04 [INFO] core.virtual_cursor: 点击 (126, 215) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 60)
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:   状态: complete_queued
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:   三条主消息全部入队: 是
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:   按键释放状态不确定: 否
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:   HWND 检查: 发送前: HWND=0x2512BE valid=True
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:   HWND 检查: WM_LBUTTONDOWN 前: HWND=0x2512BE valid=True
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:   HWND 检查: WM_LBUTTONUP 前: HWND=0x2512BE valid=True
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:     [primary] WM_MOUSEMOVE HWND=0x2512BE client=(40, 60) wParam=0x0 -> 入队成功
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:     [primary] WM_LBUTTONDOWN HWND=0x2512BE client=(40, 60) wParam=0x1 -> 入队成功
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:     [primary] WM_LBUTTONUP HWND=0x2512BE client=(40, 60) wParam=0x0 -> 入队成功
+2026-11-26 17:31:04 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:31:05 [INFO] phase5: [记录] 记事本前台点击 :: 坐标=(126, 215) 圆点中心=(126, 215) 目标=HWND 0x2512BE class='RichEditD2DPT' title='' 入队=True 插入符 (0, 0)->(44, 44) 实际点击=True
+2026-11-26 17:31:05 [INFO] phase5: [记录] 圆点位置与点击坐标一致（前台） :: 圆点中心=(126, 215) 点击坐标=(126, 215) 一致=True
+2026-11-26 17:31:07 [INFO] overlay.overlay_window: Overlay move: target=(99, 365) rect=(75, 341, 123, 389) center=(99, 365) verified=True
+2026-11-26 17:31:07 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (99, 365)
+2026-11-26 17:31:07 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (99, 365)
+2026-11-26 17:31:07 [INFO] core.window_resolver: 解析坐标 (99, 365) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 95)
+2026-11-26 17:31:07 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x2512BE class='RichEditD2DPT'
+2026-11-26 17:31:07 [INFO] core.input_backend:   [primary] WM_MOUSEMOVE HWND=0x2512BE client=(40, 95) wParam=0x0 -> 入队成功
+2026-11-26 17:31:07 [INFO] core.input_backend:   [primary] WM_LBUTTONDOWN HWND=0x2512BE client=(40, 95) wParam=0x1 -> 入队成功
+2026-11-26 17:31:07 [INFO] core.input_backend:   [primary] WM_LBUTTONUP HWND=0x2512BE client=(40, 95) wParam=0x0 -> 入队成功
+2026-11-26 17:31:07 [INFO] core.input_backend: 三条消息全部入队，但这**不等于**目标程序已处理点击。
+2026-11-26 17:31:07 [INFO] core.virtual_cursor: 点击 (99, 365) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 95)
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:   状态: complete_queued
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:   三条主消息全部入队: 是
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:   按键释放状态不确定: 否
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:   HWND 检查: 发送前: HWND=0x2512BE valid=True
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:   HWND 检查: WM_LBUTTONDOWN 前: HWND=0x2512BE valid=True
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:   HWND 检查: WM_LBUTTONUP 前: HWND=0x2512BE valid=True
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:     [primary] WM_MOUSEMOVE HWND=0x2512BE client=(40, 95) wParam=0x0 -> 入队成功
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:     [primary] WM_LBUTTONDOWN HWND=0x2512BE client=(40, 95) wParam=0x1 -> 入队成功
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:     [primary] WM_LBUTTONUP HWND=0x2512BE client=(40, 95) wParam=0x0 -> 入队成功
+2026-11-26 17:31:07 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:31:07 [INFO] phase5: [记录] 记事本被部分遮挡时点击 :: 坐标=(99, 365) 圆点中心=(99, 365) 目标=HWND 0x2512BE class='RichEditD2DPT' title='' 入队=True 插入符 (0, 0)->(44, 44) 实际点击=True
+2026-11-26 17:31:07 [INFO] phase5: [记录] 遮挡时前台确实不是记事本 :: 遮挡窗口 HWND=0x1C1E16 切换后前台=0x3511E0 遮挡期间前台=0x3511E0 记事本=0x3511E0 成立=False
+2026-11-26 17:31:07 [INFO] phase5: [记录] 遮挡点击未改变前台窗口 :: 遮挡后前台=0x3511E0 点击后前台=0x3511E0 一致=True
+2026-11-26 17:31:09 [INFO] phase5: [记录] 记事本最小化时的行为 :: IsIconic=False 最小化后窗口矩形=(-32046, 0, -31714, 202)；原坐标 (126, 215) 解析为 HWND=0x20CBE class='SysListView32'（不是记事本）；本程序按桌面坐标工作，无法向已最小化的记事本目标区域发送点击，且拒绝向系统桌面窗口发送。
+2026-11-26 17:31:11 [INFO] phase5: [记录] 浏览器已置于前台（前置条件） :: 浏览器 HWND=0x4027C title='LemonsNight/uma-auto-test: 繁中赛马娘自动化脚本 - Google Chrome' 切换后前台=0x3511E0 成功=False
+2026-11-26 17:31:12 [INFO] overlay.overlay_window: Overlay move: target=(2799, 362) rect=(2763, 326, 2835, 398) center=(2799, 362) verified=True
+2026-11-26 17:31:12 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (2799, 362)
+2026-11-26 17:31:12 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (2799, 362)
+2026-11-26 17:31:12 [INFO] core.window_resolver: 解析坐标 (2799, 362) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 130)
+2026-11-26 17:31:12 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x2512BE class='RichEditD2DPT'
+2026-11-26 17:31:12 [INFO] core.input_backend:   [primary] WM_MOUSEMOVE HWND=0x2512BE client=(40, 130) wParam=0x0 -> 入队成功
+2026-11-26 17:31:12 [INFO] core.input_backend:   [primary] WM_LBUTTONDOWN HWND=0x2512BE client=(40, 130) wParam=0x1 -> 入队成功
+2026-11-26 17:31:12 [INFO] core.input_backend:   [primary] WM_LBUTTONUP HWND=0x2512BE client=(40, 130) wParam=0x0 -> 入队成功
+2026-11-26 17:31:12 [INFO] core.input_backend: 三条消息全部入队，但这**不等于**目标程序已处理点击。
+2026-11-26 17:31:12 [INFO] core.virtual_cursor: 点击 (2799, 362) -> HWND=0x2512BE class='RichEditD2DPT' title='' client=(40, 130)
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:   状态: complete_queued
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:   三条主消息全部入队: 是
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:   按键释放状态不确定: 否
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:   HWND 检查: 发送前: HWND=0x2512BE valid=True
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:   HWND 检查: WM_LBUTTONDOWN 前: HWND=0x2512BE valid=True
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:   HWND 检查: WM_LBUTTONUP 前: HWND=0x2512BE valid=True
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:     [primary] WM_MOUSEMOVE HWND=0x2512BE client=(40, 130) wParam=0x0 -> 入队成功
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:     [primary] WM_LBUTTONDOWN HWND=0x2512BE client=(40, 130) wParam=0x1 -> 入队成功
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:     [primary] WM_LBUTTONUP HWND=0x2512BE client=(40, 130) wParam=0x0 -> 入队成功
+2026-11-26 17:31:12 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:31:12 [INFO] phase5: [记录] 浏览器前台时对记事本点击 :: 坐标=(2799, 362) 圆点中心=(2799, 362) 目标=HWND 0x2512BE class='RichEditD2DPT' title='' 入队=True 插入符 (0, 0)->(43, 43) 实际点击=True
+2026-11-26 17:31:12 [INFO] phase5: [记录] 真实鼠标未被移动（对照组 + 点击前后采样） :: 对照组 (2039, 406)->(2039, 406) 变化=False；实验组 (2039, 406)->(2039, 406) 变化=False；本程序未移动光标
+2026-11-26 17:31:12 [INFO] phase5: [记录] 前台窗口未被 PostMessage 抢走 :: 点击前前台=0x3511E0 点击后前台=0x3511E0 一致=True（浏览器前置条件不成立，浏览器场景未验证）
+2026-11-26 17:31:12 [CRITICAL] core.virtual_cursor: [阶段 5 测试] 紧急停止：状态 running -> stopped，后续操作全部拒绝
+2026-11-26 17:31:12 [WARNING] core.virtual_cursor: 紧急停止中，拒绝点击
+2026-11-26 17:31:12 [INFO] phase5: [记录] 紧急停止后立即拒绝后续点击 :: state=stopped 返回值=None
