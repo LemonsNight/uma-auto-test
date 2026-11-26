@@ -1,0 +1,684 @@
+2026-11-26 17:07:09 [INFO] VirtualMouse: DPI 感知: PER_MONITOR_DPI_AWARE
+2026-11-26 17:07:09 [INFO] VirtualMouse: 点击后端: PostMessageW（不移动真实鼠标）
+2026-11-26 17:07:09 [INFO] VirtualMouse: 注意: PostMessage 入队成功不等于目标程序处理了点击
+2026-11-26 17:07:09 [INFO] core.hotkey: 全局紧急停止热键已注册: Ctrl+Alt+Shift+K
+2026-11-26 17:07:09 [INFO] core.virtual_cursor: 控制器已启动
+2026-11-26 17:07:09 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
+2026-11-26 17:07:09 [INFO] VirtualMouse: 控制面板已启动；热键 Ctrl+Alt+Shift+K 注册状态=True
+2026-11-26 17:08:11 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
+2026-11-26 17:08:11 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (800, 400)
+2026-11-26 17:08:15 [WARNING] core.virtual_cursor: 当前状态 running，无需复位
+2026-11-26 17:08:22 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
+2026-11-26 17:08:22 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (800, 400)
+2026-11-26 17:08:23 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
+2026-11-26 17:08:23 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (800, 400)
+2026-11-26 17:08:23 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
+2026-11-26 17:08:23 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (800, 400)
+2026-11-26 17:08:24 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
+2026-11-26 17:08:24 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (800, 400)
+2026-11-26 17:08:24 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
+2026-11-26 17:08:24 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (800, 400)
+2026-11-26 17:08:33 [INFO] overlay.overlay_window: Overlay move: target=(800, 398) rect=(776, 374, 824, 422) center=(800, 398) verified=True
+2026-11-26 17:08:33 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (800, 398)
+2026-11-26 17:08:38 [INFO] overlay.overlay_window: Overlay move: target=(800, 800) rect=(776, 776, 824, 824) center=(800, 800) verified=True
+2026-11-26 17:08:38 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (800, 800)
+2026-11-26 17:08:46 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (800, 800)
+2026-11-26 17:08:46 [INFO] core.window_resolver: 解析坐标 (800, 800) -> HWND=0x81E44 class='SunAwtFrame' title='4v-uma – README.md' client=(800, 800)
+2026-11-26 17:08:46 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x81E44 client=(800, 800) wParam=0x0 -> 入队成功
+2026-11-26 17:08:46 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x81E44 client=(800, 800) wParam=0x1 -> 入队成功
+2026-11-26 17:08:46 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x81E44 client=(800, 800) wParam=0x0 -> 入队成功
+2026-11-26 17:08:46 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:08:46 [INFO] core.virtual_cursor: 点击 (800, 800) -> HWND=0x81E44 class='SunAwtFrame' title='4v-uma – README.md' client=(800, 800)
+2026-11-26 17:08:46 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:08:46 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x81E44 client=(800, 800) wParam=0x0 -> 入队成功
+2026-11-26 17:08:46 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x81E44 client=(800, 800) wParam=0x1 -> 入队成功
+2026-11-26 17:08:46 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x81E44 client=(800, 800) wParam=0x0 -> 入队成功
+2026-11-26 17:08:46 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:06 [WARNING] core.virtual_cursor: 当前状态 running，无需复位
+2026-11-26 17:09:07 [WARNING] core.virtual_cursor: 当前状态 running，无需复位
+2026-11-26 17:09:30 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (500, 800)
+2026-11-26 17:09:30 [INFO] core.window_resolver: 解析坐标 (500, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(500, 887)
+2026-11-26 17:09:30 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:30 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(500, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:30 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(500, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:30 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(500, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:30 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:30 [INFO] core.virtual_cursor: 点击 (500, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(500, 887)
+2026-11-26 17:09:30 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:30 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(500, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:30 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(500, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:30 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(500, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:30 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:32 [INFO] overlay.overlay_window: Overlay move: target=(500, 800) rect=(476, 776, 524, 824) center=(500, 800) verified=True
+2026-11-26 17:09:32 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (500, 800)
+2026-11-26 17:09:39 [INFO] overlay.overlay_window: Overlay move: target=(400, 800) rect=(376, 776, 424, 824) center=(400, 800) verified=True
+2026-11-26 17:09:39 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (400, 800)
+2026-11-26 17:09:43 [INFO] overlay.overlay_window: Overlay move: target=(300, 800) rect=(276, 776, 324, 824) center=(300, 800) verified=True
+2026-11-26 17:09:43 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (300, 800)
+2026-11-26 17:09:44 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:44 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:44 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:44 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:44 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:44 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:44 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:44 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:44 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:44 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:44 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:44 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:44 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:46 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:46 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:46 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:46 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:46 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:46 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:46 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:46 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:46 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:46 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:46 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:47 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:47 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:47 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:47 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:47 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:47 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:47 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:47 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:47 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:47 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:47 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:47 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:47 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:48 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:48 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:48 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:48 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:48 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:48 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:48 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:48 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:48 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:48 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:48 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:48 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:48 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:48 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:48 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:48 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:48 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:49 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:49 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:49 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:49 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:49 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:49 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (300, 800)
+2026-11-26 17:09:49 [INFO] core.window_resolver: 解析坐标 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:49 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:49 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:49 [INFO] core.virtual_cursor: 点击 (300, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(300, 887)
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(300, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(300, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:49 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:54 [INFO] overlay.overlay_window: Overlay move: target=(250, 800) rect=(226, 776, 274, 824) center=(250, 800) verified=True
+2026-11-26 17:09:54 [INFO] core.virtual_cursor: 圆点移动到桌面坐标 (250, 800)
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:55 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:55 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:55 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:55 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:55 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:55 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:55 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:56 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:56 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:56 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:56 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:56 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:56 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:56 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:56 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:56 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:56 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:56 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:57 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:57 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:57 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:57 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:57 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:57 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:57 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:57 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:57 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:57 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:57 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:57 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:57 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:57 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:57 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:57 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:57 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:09:59 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:09:59 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:59 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:09:59 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:59 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:59 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:59 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:09:59 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:09:59 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:09:59 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:59 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:09:59 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:09:59 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:00 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:00 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:00 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:00 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:00 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:00 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:00 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:00 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:00 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:00 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:00 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:00 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:00 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:00 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:00 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:00 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:01 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:01 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:01 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:01 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:01 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:01 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:01 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:01 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:01 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:01 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:01 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:01 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:01 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:01 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:01 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:01 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:02 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:02 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:02 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:02 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:02 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:02 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:02 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:02 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:02 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:02 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:02 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:02 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:02 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:02 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:02 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:02 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:03 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:03 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:03 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:03 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:03 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:03 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:03 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:10 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:10 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:10 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:10 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:10 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:10 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:10 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:10 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:10 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:10 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:10 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:10 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:10 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:10 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:10 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:10 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:10 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:11 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:11 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:11 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:11 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:11 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:11 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:11 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:11 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:11 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:11 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:11 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:15 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:15 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:15 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:15 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:15 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:15 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:15 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:15 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:15 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:15 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:15 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:15 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:15 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:15 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:15 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:15 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:15 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:16 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:16 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:16 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:16 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:16 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:16 [INFO] core.virtual_cursor: 开始点击流程，桌面坐标 (250, 800)
+2026-11-26 17:10:16 [INFO] core.window_resolver: 解析坐标 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:16 [INFO] core.window_resolver:   note: WindowFromPoint 命中子窗口 HWND=0x20CBE class='SysListView32'
+2026-11-26 17:10:16 [INFO] core.input_backend:   WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.input_backend:   WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.input_backend:   WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.input_backend: 消息全部入队，但这**不等于**目标程序已处理点击。见验证字段。
+2026-11-26 17:10:16 [INFO] core.virtual_cursor: 点击 (250, 800) -> HWND=0x20CBE class='SysListView32' title='FolderView' client=(250, 887)
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:   消息入队: 全部成功
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:     WM_MOUSEMOVE HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:     WM_LBUTTONDOWN HWND=0x20CBE client=(250, 887) wParam=0x1 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:     WM_LBUTTONUP HWND=0x20CBE client=(250, 887) wParam=0x0 -> 入队成功
+2026-11-26 17:10:16 [INFO] core.virtual_cursor:   实际点击验证: 未验证（仅确认消息入队；实际点击需外部证据）
+2026-11-26 17:10:19 [INFO] core.hotkey: 全局热键已注销

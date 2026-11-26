@@ -1,0 +1,4 @@
+# VirtualMouse Phase 1 依赖
+# 实测环境：Python 3.13.5 (D:\app\python\python.exe)
+PySide6>=6.6
+pywin32>=306

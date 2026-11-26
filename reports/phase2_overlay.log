@@ -1,0 +1,35 @@
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 窗口标志 WS_EX_TRANSPARENT :: EXSTYLE=0x080800A8 bit=ON
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 窗口标志 WS_EX_NOACTIVATE :: EXSTYLE=0x080800A8 bit=ON
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 窗口标志 WS_EX_LAYERED :: EXSTYLE=0x080800A8 bit=ON
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 窗口标志 WS_EX_TOOLWINDOW :: EXSTYLE=0x080800A8 bit=ON
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 窗口标志 WS_EX_TOPMOST :: EXSTYLE=0x080800A8 bit=ON
+2026-11-26 17:02:17 [INFO] phase2: [PASS] Overlay 不抢前台焦点 :: show 前 HWND=0x41B38，show 后 HWND=0x41B38
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(300, 300) rect=(276, 276, 324, 324) center=(300, 300) verified=True
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 圆点移动到 (300, 300) :: 实测中心=(300, 300)，期望=(300, 300)
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(1200, 700) rect=(1176, 676, 1224, 724) center=(1200, 700) verified=True
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 圆点移动到 (1200, 700) :: 实测中心=(1200, 700)，期望=(1200, 700)
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(3000, 300) rect=(2964, 264, 3036, 336) center=(3000, 300) verified=True
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 圆点移动到 (3000, 300) :: 实测中心=(3000, 300)，期望=(3000, 300)
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(4000, 900) rect=(3964, 864, 4036, 936) center=(4000, 900) verified=True
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 圆点移动到 (4000, 900) :: 实测中心=(4000, 900)，期望=(4000, 900)
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(3000, -40) rect=(2964, -76, 3036, -4) center=(3000, -40) verified=True
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 圆点移动到 (3000, -40) :: 实测中心=(3000, -40)，期望=(3000, -40)
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(3000, 300) rect=(2964, 264, 3036, 336) center=(3000, 300) verified=True
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 鼠标穿透 WindowFromPoint :: Overlay HWND=0x21F1E，命中 HWND=0x2512BE class='RichEditD2DPT' title=''
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(200, 200) rect=(176, 176, 224, 224) center=(200, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(230, 200) rect=(206, 176, 254, 224) center=(230, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(260, 200) rect=(236, 176, 284, 224) center=(260, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(290, 200) rect=(266, 176, 314, 224) center=(290, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(320, 200) rect=(296, 176, 344, 224) center=(320, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(350, 200) rect=(326, 176, 374, 224) center=(350, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(380, 200) rect=(356, 176, 404, 224) center=(380, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(410, 200) rect=(386, 176, 434, 224) center=(410, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(440, 200) rect=(416, 176, 464, 224) center=(440, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(470, 200) rect=(446, 176, 494, 224) center=(470, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(500, 200) rect=(476, 176, 524, 224) center=(500, 200) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(530, 200) rect=(506, 176, 554, 224) center=(530, 200) verified=True
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 真实鼠标未被移动（连续 12 次移动圆点） :: 移动前=(1419, 0)，移动后=(1419, 0)
+2026-11-26 17:02:17 [INFO] phase2: [PASS] 显示/隐藏 :: 隐藏成功=True，重新显示成功=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(800, 400) rect=(776, 376, 824, 424) center=(800, 400) verified=True
+2026-11-26 17:02:17 [INFO] overlay.overlay_window: Overlay move: target=(3500, 500) rect=(3464, 464, 3536, 536) center=(3500, 500) verified=True
+2026-11-26 17:02:18 [INFO] phase2: [PASS] 测试截图 :: phase2_dot_primary.png, phase2_dot_secondary.png
